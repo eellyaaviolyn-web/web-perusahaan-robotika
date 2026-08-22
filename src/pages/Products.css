@@ -1,0 +1,103 @@
+.products-page {
+  background-color: var(--bg-color);
+}
+
+.product-gallery {
+  padding: 6rem 0;
+}
+
+.product-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+  margin-bottom: 10rem;
+}
+
+.product-showcase.reverse {
+  grid-template-columns: 1fr 1fr;
+}
+
+.product-image {
+  height: 600px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem 8rem 1.5rem 1.5rem;
+  box-shadow: 0 30px 60px -15px rgba(28, 43, 54, 0.3);
+  overflow: hidden;
+}
+
+.product-details {
+  padding: 2rem;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  color: var(--primary);
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+}
+
+.product-name {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+.product-desc {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.product-specs {
+  list-style: none;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-specs li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--text-main);
+}
+
+.product-specs li span {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
+
+@media (max-width: 992px) {
+  .product-showcase { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 6rem; }
+  .product-showcase.reverse { display: flex; flex-direction: column-reverse; }
+  .product-image { height: 400px; }
+  .product-name { font-size: 2.5rem; }
+}
+
+.discover-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--secondary);
+  border-bottom: 1px solid var(--secondary);
+  padding-bottom: 0.25rem;
+  transition: var(--transition);
+}
+
+.discover-link:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}

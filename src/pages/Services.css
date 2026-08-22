@@ -1,0 +1,225 @@
+.services-list-section {
+  padding: 6rem 0 4rem 0;
+  background-color: var(--bg-color);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.service-card {
+  padding: 4rem 3rem;
+  background-color: var(--bg-color-alt);
+  border: 1px solid var(--border-color);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-align: center;
+  border-radius: 1rem 4rem 1rem 1rem;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px -15px rgba(28, 43, 54, 0.15);
+}
+
+.service-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  color: var(--primary);
+  border: 1px solid var(--border-color);
+}
+
+.service-card h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: var(--secondary);
+}
+
+.service-card p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* Methodology Section */
+.methodology-section {
+  padding: 6rem 0 10rem 0;
+  background-color: var(--bg-color);
+}
+
+.methodology-timeline {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 2rem;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 30px;
+  width: 2px;
+  background-color: var(--border-color);
+  z-index: 1;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-step:last-child {
+  margin-bottom: 0;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 10px 20px -5px rgba(197, 168, 128, 0.5);
+}
+
+.step-content {
+  background-color: var(--bg-color-alt);
+  padding: 3rem;
+  border-radius: 1rem 3rem 1rem 1rem;
+  border: 1px solid var(--border-color);
+  position: relative;
+  box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+  flex: 1;
+}
+
+.step-content::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--bg-color-alt);
+  transform: rotate(45deg);
+  border-left: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.step-icon {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.step-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.step-content p {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+/* SLA Banner */
+.sla-banner {
+  position: relative;
+  padding: 10rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.sla-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1;
+}
+
+.sla-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+.sla-overlay {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(28,43,54,0.95) 0%, rgba(28,43,54,0.7) 100%);
+}
+
+.sla-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  max-width: 800px;
+}
+
+.sla-content h2 {
+  font-size: 4rem;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.sla-content p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-weight: 300;
+  margin-bottom: 3rem;
+  opacity: 0.9;
+}
+
+.sla-stats {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.sla-stats h4 {
+  color: var(--primary);
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.sla-stats span {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.sla-stats .divider {
+  width: 1px;
+  height: 60px;
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* CTA */
+.services-cta {
+  padding: 8rem 0;
+  background-color: var(--bg-color-alt);
+}
+
+@media (max-width: 992px) {
+  .services-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .timeline-step { flex-direction: column; gap: 1.5rem; }
+  .timeline-line { left: 30px; }
+  .step-content::before { display: none; }
+  .sla-content h2 { font-size: 3rem; }
+  .sla-stats { flex-direction: column; align-items: flex-start; gap: 2rem; }
+  .sla-stats .divider { display: none; }
+}
