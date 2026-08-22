@@ -60,8 +60,7 @@ export default function Home() {
           >
             <motion.span variants={fadeUp} className="hero-kicker">SELAMAT DATANG DI ERA BARU</motion.span>
             <motion.h1 variants={fadeUp} className="hero-title font-serif">
-              Otomasi Industri<br/>
-              <span className="italic">Tanpa Batas</span>
+              Vin <span className="italic">Robotika</span>
             </motion.h1>
           </motion.div>
         </div>
