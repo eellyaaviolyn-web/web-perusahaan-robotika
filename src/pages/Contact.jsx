@@ -61,7 +61,7 @@ export default function Contact() {
     };
     
     try {
-      const response = await fetch("/api/notion/v1/pages", {
+      const response = await fetch("/api/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
