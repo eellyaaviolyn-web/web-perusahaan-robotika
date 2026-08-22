@@ -1,0 +1,22 @@
+﻿.scroll-to-top {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2.2rem;
+  z-index: 9998;
+  width: 44px;
+  height: 44px;
+  background: var(--secondary, #1c2b36);
+  color: var(--primary, #c5a880);
+  border: 1px solid var(--primary, #c5a880);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.scroll-to-top:hover {
+  background: var(--primary, #c5a880);
+  color: white;
+}

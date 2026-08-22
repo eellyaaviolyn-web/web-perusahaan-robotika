@@ -37,9 +37,15 @@
   opacity: 1;
 }
 
-/* On transparent dark header (Home), make the transparent logo pure white */
+/* Logo always visible; on transparent dark header invert to white */
 .navbar:not(.scrolled) .nav-logo {
   filter: brightness(0) invert(1);
+}
+
+/* On solid/scrolled navbar, show logo naturally (for dark/colored logos) */
+.navbar.scrolled .nav-logo {
+  filter: none;
+  opacity: 1;
 }
 
 .nav-menu {

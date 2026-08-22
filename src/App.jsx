@@ -3,6 +3,8 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import WhatsAppButton from './components/WhatsAppButton';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import About from './pages/About';
 import Products from './pages/Products';
@@ -14,6 +16,7 @@ import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Simulator from './pages/Simulator';
+import NotFound from './pages/NotFound';
 
 const PageWrapper = ({ children }) => (
   <>
@@ -64,10 +67,13 @@ function App() {
             <Route path="/simulator" element={<PageWrapper><Simulator /></PageWrapper>} />
             <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
             <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+            <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
           </Routes>
         </AnimatePresence>
       </main>
       <Footer />
+      <WhatsAppButton />
+      <ScrollToTop />
     </>
   );
 }

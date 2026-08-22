@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { Cpu } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer() {

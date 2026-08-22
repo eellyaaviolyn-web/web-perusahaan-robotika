@@ -96,6 +96,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="stats-section">
+        <div className="container">
+          <motion.div
+            className="stats-grid"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
+            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
+          >
+            {[
+              { number: '200+', label: 'Klien Enterprise' },
+              { number: '99.9%', label: 'Tingkat Uptime' },
+              { number: '12', label: 'Negara Beroperasi' },
+              { number: '<0.01%', label: 'Rasio Downtime/Tahun' },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                className="stat-item"
+                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } } }}
+              >
+                <span className="stat-number font-serif">{stat.number}</span>
+                <span className="stat-label">{stat.label}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section className="features-section">
         <div className="container">
@@ -199,7 +228,7 @@ export default function Home() {
                 <motion.img 
                   whileHover={{ scale: 1.1 }} 
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-green.png" alt="V-Cobot Harmony" className="image-placeholder" style={{ objectFit: 'cover', backgroundColor: '#e2e8f0' }} />
+                  src="/robot-green.png" alt="V-Cobot Harmony" className="image-placeholder" style={{ objectFit: 'contain', backgroundColor: '#111827', padding: '1rem' }} />
               </div>
               <div className="card-content">
                 <h3 className="font-serif">V-Cobot Harmony</h3>
@@ -213,7 +242,7 @@ export default function Home() {
                 <motion.img 
                   whileHover={{ scale: 1.1 }} 
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-boxy.png" alt="Aero AMR Fleet" className="image-placeholder" style={{ objectFit: 'cover', backgroundColor: '#e2e8f0' }} />
+                  src="/robot-boxy.png" alt="Aero AMR Fleet" className="image-placeholder" style={{ objectFit: 'contain', backgroundColor: '#111827', padding: '1rem' }} />
               </div>
               <div className="card-content">
                 <h3 className="font-serif">Aero AMR Fleet</h3>
