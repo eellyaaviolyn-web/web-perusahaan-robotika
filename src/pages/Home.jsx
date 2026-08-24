@@ -228,7 +228,7 @@ export default function Home() {
                 <motion.img 
                   whileHover={{ scale: 1.1 }} 
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-green.png" alt="V-Cobot Harmony" className="image-placeholder" style={{ objectFit: 'contain', backgroundColor: '#111827', padding: '1rem' }} />
+                  src="/robot-green.png" alt="V-Cobot Harmony" className="image-placeholder" style={{ objectFit: 'cover' }} />
               </div>
               <div className="card-content">
                 <h3 className="font-serif">V-Cobot Harmony</h3>
@@ -242,7 +242,7 @@ export default function Home() {
                 <motion.img 
                   whileHover={{ scale: 1.1 }} 
                   transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-boxy.png" alt="Aero AMR Fleet" className="image-placeholder" style={{ objectFit: 'contain', backgroundColor: '#111827', padding: '1rem' }} />
+                  src="/robot-boxy.png" alt="Aero AMR Fleet" className="image-placeholder" style={{ objectFit: 'cover' }} />
               </div>
               <div className="card-content">
                 <h3 className="font-serif">Aero AMR Fleet</h3>

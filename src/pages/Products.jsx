@@ -60,14 +60,14 @@ export default function Products() {
               <Link to="/products/v-cobot" className="discover-link mt-4">Lihat Detail <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
             </motion.div>
             <motion.div className="product-image" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-               <img src="/robot-green.png" alt="V-Cobot Harmony" style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundColor: '#e2e8f0' }} />
+               <img src="/robot-green.png" alt="V-Cobot Harmony" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </motion.div>
           </div>
           
           {/* Product 3 */}
           <div className="product-showcase">
             <motion.div className="product-image" initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }}>
-               <img src="/robot-boxy.png" alt="Aero AMR Fleet" style={{ width: '100%', height: '100%', objectFit: 'cover', backgroundColor: '#e2e8f0' }} />
+               <img src="/robot-boxy.png" alt="Aero AMR Fleet" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </motion.div>
             <motion.div className="product-details" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <h4 className="product-category">SISTEM LOGISTIK OTONOM</h4>
