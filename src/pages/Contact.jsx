@@ -120,7 +120,7 @@ export default function Contact() {
                   <MapPin size={24} className="text-primary"/>
                   <div>
                     <h4>Vin Robotik Tower</h4>
-                    <p>Jl. Jend. Sudirman Kav 20, SCBD<br/>Jakarta Selatan, Indonesia 12190</p>
+                    <p>Jl. Sukarno Hatta<br/>Jawa Barat, Indonesia</p>
                   </div>
                 </li>
                 <li>
