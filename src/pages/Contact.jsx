@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import './Contact.css';
 
 const fadeUp = {
@@ -11,24 +12,35 @@ const fadeUp = {
 
 export default function Contact() {
   const location = useLocation();
-  const [industry, setIndustry] = useState('Otomotif & Manufaktur Berat');
+  const { t, language } = useLanguage();
+  const contactData = t('contact');
+  
+  const [industry, setIndustry] = useState(contactData.form.ind1);
   const [details, setDetails] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    // Also update industry state when language changes so it matches the select options
+    setIndustry(contactData.form.ind1);
+  }, [language]);
 
   useEffect(() => {
     if (location.state) {
       if (location.state.industry) setIndustry(location.state.industry);
       
       if (location.state.fromPdf) {
-        setDetails('[SUMBER: PDF SIMULATOR] Mohon kirimkan salinan Laporan Proyeksi ROI (PDF) berdasarkan simulasi yang baru saja saya lakukan ke email bisnis ini.');
+        setDetails(contactData.messages.pdfDetails);
       } else if (location.state.solution || location.state.timeline) {
-        setDetails(`[SUMBER: JURNAL INOVASI] Saya tertarik dengan solusi ${location.state.solution || 'robotika'} untuk diimplementasikan pada ${location.state.timeline || 'waktu dekat'}. Mohon informasikan ketersediaan tim engineer Anda.`);
+        let text = contactData.messages.journalDetails;
+        text = text.replace('{solution}', location.state.solution || 'robotika');
+        text = text.replace('{timeline}', location.state.timeline || 'waktu dekat');
+        setDetails(text);
       } else {
-        setDetails('[SUMBER: KONTAK UMUM] Saya ingin berdiskusi mengenai...');
+        setDetails(contactData.messages.generalDetails);
       }
     }
-  }, [location]);
+  }, [location, language]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -73,15 +85,14 @@ export default function Contact() {
         setIsSubmitted(true);
         setDetails('');
         e.target.reset();
-        // Remove ugly native alert
         setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         const errorData = await response.json();
         console.error("Notion Error:", errorData);
-        alert(`Gagal: ${errorData.message}`);
+        alert(`${contactData.messages.failApi} ${errorData.message}`);
       }
     } catch (error) {
-      alert("Koneksi gagal. Silakan periksa internet Anda.");
+      alert(contactData.messages.failConn);
     } finally {
       setIsSubmitting(false);
     }
@@ -93,15 +104,15 @@ export default function Contact() {
         <div className="container">
           <motion.h1 className="font-serif page-title" initial="hidden" animate="visible" variants={fadeUp}>
             {location.state?.fromPdf ? (
-              <>Unduh Laporan <span className="italic">PDF</span></>
+              <>{contactData.hero.pdfTitle1} <span className="italic">{contactData.hero.pdfTitle2}</span></>
             ) : (
-              <>Reservasi <span className="italic">Konsultasi</span></>
+              <>{contactData.hero.title1} <span className="italic">{contactData.hero.title2}</span></>
             )}
           </motion.h1>
           <motion.p className="page-subtitle" initial="hidden" animate="visible" variants={fadeUp} transition={{ delay: 0.2 }}>
             {location.state?.fromPdf 
-              ? "Silakan lengkapi profil perusahaan Anda. Sistem kami akan segera mengirimkan laporan proyeksi ROI ke email bisnis Anda."
-              : "Silakan hubungi kami untuk mendiskusikan transformasi otomatisasi fasilitas Anda."}
+              ? contactData.hero.pdfSubtitle
+              : contactData.hero.subtitle}
           </motion.p>
         </div>
       </section>
@@ -112,28 +123,28 @@ export default function Contact() {
             
             {!location.state?.fromPdf && (
               <motion.div className="contact-info" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <h2 className="font-serif">Kantor Pusat Global</h2>
-              <p className="info-desc">Bagi klien VVIP kami, kunjungan langsung ke fasilitas pusat perakitan Vin Robotik dapat dijadwalkan melalui undangan khusus.</p>
+              <h2 className="font-serif">{contactData.info.title}</h2>
+              <p className="info-desc">{contactData.info.desc}</p>
               
               <ul className="info-list">
                 <li>
                   <MapPin size={24} className="text-primary"/>
                   <div>
-                    <h4>Vin Robotik Tower</h4>
-                    <p>Jl. Sukarno Hatta<br/>Jawa Barat, Indonesia</p>
+                    <h4>{contactData.info.hq}</h4>
+                    <p>{contactData.info.address1}<br/>{contactData.info.address2}</p>
                   </div>
                 </li>
                 <li>
                   <Phone size={24} className="text-primary"/>
                   <div>
-                    <h4>Direct Line</h4>
+                    <h4>{contactData.info.phone}</h4>
                     <p>+62 811-2233-4455</p>
                   </div>
                 </li>
                 <li>
                   <Mail size={24} className="text-primary"/>
                   <div>
-                    <h4>Enterprise Inquiry</h4>
+                    <h4>{contactData.info.email}</h4>
                     <p>corporate@vinrobotik.com</p>
                   </div>
                 </li>
@@ -153,37 +164,37 @@ export default function Contact() {
                     exit={{ opacity: 0, y: -20 }}
                   >
                     <div className="form-group">
-                      <label>Nama Lengkap</label>
-                      <input type="text" name="nama_lengkap" className="luxury-input" placeholder="contoh: Vinzkie" required />
+                      <label>{contactData.form.name}</label>
+                      <input type="text" name="nama_lengkap" className="luxury-input" placeholder={contactData.form.namePlace} required />
                     </div>
                     
                     <div className="form-row">
                       <div className="form-group">
-                        <label>Jabatan</label>
-                        <input type="text" name="jabatan" className="luxury-input" placeholder="contoh: Plant Manager" required />
+                        <label>{contactData.form.role}</label>
+                        <input type="text" name="jabatan" className="luxury-input" placeholder={contactData.form.rolePlace} required />
                       </div>
                       <div className="form-group">
-                        <label>Email Bisnis</label>
-                        <input type="email" name="email_bisnis" className="luxury-input" placeholder="nama@perusahaan.com" required />
+                        <label>{contactData.form.email}</label>
+                        <input type="email" name="email_bisnis" className="luxury-input" placeholder={contactData.form.emailPlace} required />
                       </div>
                     </div>
 
                     <div className="form-group">
-                      <label>Sektor Industri</label>
+                      <label>{contactData.form.industry}</label>
                       <select className="luxury-input" value={industry} onChange={(e) => setIndustry(e.target.value)}>
-                        <option value="Otomotif & Manufaktur Berat">Otomotif & Manufaktur Berat</option>
-                        <option value="Elektronik & Semikonduktor">Elektronik & Semikonduktor</option>
-                        <option value="Logistik & Pergudangan">Logistik & Pergudangan</option>
-                        <option value="Farmasi & F&B">Farmasi & F&B</option>
+                        <option value={contactData.form.ind1}>{contactData.form.ind1}</option>
+                        <option value={contactData.form.ind2}>{contactData.form.ind2}</option>
+                        <option value={contactData.form.ind3}>{contactData.form.ind3}</option>
+                        <option value={contactData.form.ind4}>{contactData.form.ind4}</option>
                       </select>
                     </div>
 
                     <div className="form-group">
-                      <label>Detail Kebutuhan Proyek</label>
+                      <label>{contactData.form.details}</label>
                       <textarea 
                         className="luxury-input" 
                         rows="4" 
-                        placeholder="Jelaskan secara singkat tantangan di lini produksi Anda..."
+                        placeholder={contactData.form.detailsPlace}
                         value={details}
                         onChange={(e) => setDetails(e.target.value)}
                         required
@@ -191,7 +202,7 @@ export default function Contact() {
                     </div>
 
                     <button type="submit" className="btn btn-primary submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? "MENGIRIM..." : (location.state?.fromPdf ? "KIRIMKAN PDF KE EMAIL SAYA" : "KIRIM PERMINTAAN")} <ArrowRight size={16} style={{marginLeft: '8px'}} />
+                      {isSubmitting ? contactData.form.btnSending : (location.state?.fromPdf ? contactData.form.btnPdf : contactData.form.btnSubmit)} <ArrowRight size={16} style={{marginLeft: '8px'}} />
                     </button>
                   </motion.form>
                 ) : (
@@ -210,11 +221,11 @@ export default function Contact() {
                     >
                       <CheckCircle size={72} className="text-primary" style={{ marginBottom: '1.5rem' }} />
                     </motion.div>
-                    <h3 className="font-serif" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Permintaan Terkirim</h3>
+                    <h3 className="font-serif" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{contactData.messages.successTitle}</h3>
                     <p className="text-muted" style={{ fontSize: '1.1rem', maxWidth: '400px', margin: '0 auto' }}>
                       {location.state?.fromPdf 
-                        ? "Terima kasih! Dokumen Laporan Proyeksi ROI (PDF) sedang diproses dan akan segera mendarat di kotak masuk (inbox) email bisnis Anda dalam beberapa menit." 
-                        : "Terima kasih atas ketertarikan Anda. Tim Principal Engineer kami telah menerima data Anda dan akan segera menghubungi Anda untuk menjadwalkan sesi konsultasi eksklusif."}
+                        ? contactData.messages.successPdf 
+                        : contactData.messages.successGeneral}
                     </p>
                   </motion.div>
                 )}
