@@ -253,3 +253,53 @@ id.contact = {
     successGeneral: "Terima kasih atas ketertarikan Anda. Tim Principal Engineer kami telah menerima data Anda dan akan segera menghubungi Anda untuk menjadwalkan sesi konsultasi eksklusif."
   }
 };
+
+id.simulator = {
+  hero: {
+    title1: "Kalkulator",
+    title2: "ROI",
+    subtitle: "Simulasikan perbandingan biaya operasional pabrik Anda antara menggunakan tenaga kerja manual versus integrasi sistem otomasi Vin Robotik selama 5 tahun ke depan."
+  },
+  controls: {
+    title: "Parameter Pabrik",
+    workers: "Total Pekerja Manual",
+    workersUnit: "Orang",
+    salary: "Gaji Rata-rata per Bulan",
+    salaryUnit: "Juta",
+    note: "* Asumsi perhitungan: 1 unit Robot Vin beroperasi 24/7 menggantikan 3 shift pekerja manual. Biaya robot sudah termasuk CAPEX dan biaya pemeliharaan (OPEX) selama 5 tahun."
+  },
+  results: {
+    manual: "Biaya Manual (5 Tahun)",
+    robot: "Investasi Vin Robotik (5 Tahun)",
+    savings: "Potensi Penghematan Bersih",
+    milyar: "Milyar",
+    juta: "Juta"
+  },
+  chart: {
+    title: "Proyeksi Pengeluaran 5 Tahun",
+    manualLabel: "Sistem Manual",
+    robotLabel: "Vin Robotik"
+  },
+  metrics: {
+    title: "Analisis Dampak Operasional",
+    bep: "Titik Impas (ROI)",
+    bepMonths: "Bulan",
+    bepInvalid: "Tidak Valid",
+    bepDesc: "Pengembalian modal investasi secara penuh.",
+    cap: "Kapasitas Produksi",
+    capDesc: "Beroperasi 24/7 tanpa henti dan pergantian shift.",
+    pre: "Tingkat Presisi",
+    preDesc: "Akurasi perakitan tingkat industri kedirgantaraan.",
+    red: "Reduksi Kecelakaan",
+    redDesc: "Menghilangkan risiko cedera manusia di area berbahaya."
+  },
+  download: {
+    text: "Unduh hasil kalkulasi simulasi ini sebagai laporan PDF lengkap untuk direksi Anda.",
+    btn: "Unduh Laporan Proyeksi (PDF)"
+  },
+  cta: {
+    title: "Berhenti Membakar Uang Anda",
+    desc: "Ribuan miliaran rupiah menguap setiap tahun karena inefisiensi. Jadwalkan audit otomasi pabrik Anda bersama para ahli kami hari ini.",
+    btn: "Jadwalkan Konsultasi Gratis"
+  }
+};

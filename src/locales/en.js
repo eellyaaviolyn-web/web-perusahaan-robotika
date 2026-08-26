@@ -253,3 +253,53 @@ en.contact = {
     successGeneral: "Thank you for your interest. Our Principal Engineering team has received your data and will contact you shortly to schedule an exclusive consultation session."
   }
 };
+
+en.simulator = {
+  hero: {
+    title1: "ROI",
+    title2: "Calculator",
+    subtitle: "Simulate your factory's operational cost comparison between using manual labor versus integrating Vin Robotik automation systems over the next 5 years."
+  },
+  controls: {
+    title: "Factory Parameters",
+    workers: "Total Manual Workers",
+    workersUnit: "People",
+    salary: "Average Monthly Salary",
+    salaryUnit: "Million",
+    note: "* Calculation assumptions: 1 Vin Robot unit operates 24/7 replacing 3 manual worker shifts. Robot costs include CAPEX and maintenance costs (OPEX) for 5 years."
+  },
+  results: {
+    manual: "Manual Cost (5 Years)",
+    robot: "Vin Robotik Investment (5 Years)",
+    savings: "Net Potential Savings",
+    milyar: "Billion",
+    juta: "Million"
+  },
+  chart: {
+    title: "5-Year Expenditure Projection",
+    manualLabel: "Manual System",
+    robotLabel: "Vin Robotik"
+  },
+  metrics: {
+    title: "Operational Impact Analysis",
+    bep: "Break Even Point (ROI)",
+    bepMonths: "Months",
+    bepInvalid: "Invalid",
+    bepDesc: "Full return on investment capital.",
+    cap: "Production Capacity",
+    capDesc: "Operates 24/7 non-stop without shift changes.",
+    pre: "Precision Rate",
+    preDesc: "Aerospace industry-grade assembly accuracy.",
+    red: "Accident Reduction",
+    redDesc: "Eliminates the risk of human injury in hazardous areas."
+  },
+  download: {
+    text: "Download the results of this simulation calculation as a complete PDF report for your board of directors.",
+    btn: "Download Projection Report (PDF)"
+  },
+  cta: {
+    title: "Stop Burning Your Money",
+    desc: "Billions of rupiah evaporate every year due to inefficiency. Schedule an automation audit of your factory with our experts today.",
+    btn: "Schedule Free Consultation"
+  }
+};
