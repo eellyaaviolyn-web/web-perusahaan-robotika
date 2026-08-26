@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
+﻿import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import './Footer.css';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer glass-panel">
       <div className="container">
@@ -11,34 +14,34 @@ export default function Footer() {
               <img src="/logo.png" alt="Vin Robotik" style={{ height: '60px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 10px rgba(255,255,255,0.1))' }} />
             </Link>
             <p className="footer-desc">
-              Pelopor teknologi robotika terintegrasi dan sistem otomasi industri. Menghadirkan solusi cerdas untuk masa depan manufaktur.
+              {t('footer.desc')}
             </p>
           </div>
           
           <div className="footer-links">
-            <h3>Navigasi Utama</h3>
+            <h3>{t('footer.navTitle')}</h3>
             <ul>
-              <li><Link to="/">Beranda</Link></li>
-              <li><Link to="/about">Tentang Kami</Link></li>
-              <li><Link to="/products">Katalog Produk</Link></li>
-              <li><Link to="/services">Layanan & Integrasi</Link></li>
+              <li><Link to="/">{t('footer.navHome')}</Link></li>
+              <li><Link to="/about">{t('footer.navAbout')}</Link></li>
+              <li><Link to="/products">{t('footer.navProducts')}</Link></li>
+              <li><Link to="/services">{t('footer.navServices')}</Link></li>
             </ul>
           </div>
 
           <div className="footer-links">
-            <h3>Legal & Kebijakan</h3>
+            <h3>{t('footer.legalTitle')}</h3>
             <ul>
-              <li><Link to="#">Kebijakan Privasi</Link></li>
-              <li><Link to="#">Syarat & Ketentuan</Link></li>
-              <li><Link to="#">Standar Keamanan ISO</Link></li>
-              <li><Link to="#">Peta Situs</Link></li>
+              <li><Link to="#">{t('footer.privacy')}</Link></li>
+              <li><Link to="#">{t('footer.terms')}</Link></li>
+              <li><Link to="#">{t('footer.iso')}</Link></li>
+              <li><Link to="#">{t('footer.sitemap')}</Link></li>
             </ul>
           </div>
 
           <div className="footer-contact">
-            <h3>Hubungi Kami</h3>
-            <p>Hotline WhatsApp 24/7:<br/><strong>+62 857-9798-2538</strong></p>
-            <p>Email:<br/><strong>VinRobotik@perusahaan.com</strong></p>
+            <h3>{t('footer.contactTitle')}</h3>
+            <p>{t('footer.hotline')}<br/><strong>+62 857-9798-2538</strong></p>
+            <p>{t('footer.email')}<br/><strong>VinRobotik@perusahaan.com</strong></p>
             <div className="social-links">
               <a href="https://www.facebook.com/share/1Jg93vMeyH/" aria-label="Facebook">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -73,7 +76,7 @@ export default function Footer() {
         </div>
         
         <div className="footer-bottom">
-          <p>&copy; 2026 Vin Robotik. All Rights Reserved.</p>
+          <p>{t('footer.rights')}</p>
         </div>
       </div>
     </footer>

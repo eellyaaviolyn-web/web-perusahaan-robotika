@@ -1,8 +1,9 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Cpu, Shield, Zap, Star, Clock } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import Particles from '../components/Particles';
+import { useLanguage } from '../context/LanguageContext';
 import './Home.css';
 
 const fadeUp = {
@@ -36,6 +37,8 @@ const staggerContainer = {
 
 export default function Home() {
   const navigate = useNavigate();
+  const { t, language } = useLanguage();
+  const homeData = t('home');
 
   return (
     <div className="home">
@@ -58,10 +61,10 @@ export default function Home() {
             initial="hidden" 
             animate="visible" 
           >
-            <motion.span variants={fadeUp} className="hero-kicker">SELAMAT DATANG DI ERA BARU</motion.span>
+            <motion.span variants={fadeUp} className="hero-kicker">{homeData.hero.kicker}</motion.span>
             <motion.h1 variants={fadeUp} className="hero-title font-serif">
-              Revolusi Otomasi<br/>
-              <span className="italic">Vin Robotik</span>
+              {homeData.hero.title1}<br/>
+              <span className="italic">{homeData.hero.title2}</span>
             </motion.h1>
           </motion.div>
         </div>
@@ -75,8 +78,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <Link to="/contact" className="btn btn-primary hover-target">Konsultasi Pakar <ArrowRight size={18} className="ml-2" /></Link>
-            <Link to="/collection" className="btn btn-outline hover-target" style={{ backgroundColor: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.2)', color: 'white' }}>Lihat Sistem Kami</Link>
+            <Link to="/contact" className="btn btn-primary hover-target">{homeData.hero.consult} <ArrowRight size={18} className="ml-2" /></Link>
+            <Link to="/collection" className="btn btn-outline hover-target" style={{ backgroundColor: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.2)', color: 'white' }}>{homeData.hero.system}</Link>
           </motion.div>
         </div>
       </section>
@@ -106,12 +109,7 @@ export default function Home() {
             viewport={{ once: true, margin: '-80px' }}
             variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
           >
-            {[
-              { number: '200+', label: 'Klien Enterprise' },
-              { number: '99.9%', label: 'Tingkat Uptime' },
-              { number: '12', label: 'Negara Beroperasi' },
-              { number: '<0.01%', label: 'Rasio Downtime/Tahun' },
-            ].map((stat, i) => (
+            {homeData.stats.map((stat, i) => (
               <motion.div
                 key={i}
                 className="stat-item"
@@ -136,14 +134,14 @@ export default function Home() {
             variants={fadeUp}
           >
             {[
-              { icon: <Cpu size={32} />, title: "Intelijen Adaptif", desc: "Sistem kami belajar dan mengoptimalkan diri secara mandiri, beradaptasi dengan perubahan jalur perakitan." },
-              { icon: <Zap size={32} />, title: "Kecepatan Mikrosekon", desc: "Mengurangi waktu siklus produksi (cycle time) hingga 60% tanpa mengorbankan tingkat presisi struktural." },
-              { icon: <Shield size={32} />, title: "Keandalan Militer", desc: "Beroperasi 24/7 di lingkungan paling ekstrem dengan rasio downtime kurang dari 0.01% per tahun." }
+              { icon: <Cpu size={32} />, item: homeData.features[0] },
+              { icon: <Zap size={32} />, item: homeData.features[1] },
+              { icon: <Shield size={32} />, item: homeData.features[2] }
             ].map((feat, i) => (
               <motion.div key={i} className="feature-card" variants={staggerChild}>
                 <div className="feature-icon">{feat.icon}</div>
-                <h3 className="font-serif">{feat.title}</h3>
-                <p>{feat.desc}</p>
+                <h3 className="font-serif">{feat.item.title}</h3>
+                <p>{feat.item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -161,15 +159,15 @@ export default function Home() {
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeUp}
             >
-              <h2 className="section-title" style={{ textAlign: 'left' }}>Mendefinisikan Ulang <br/><span className="italic">Efisiensi</span></h2>
+              <h2 className="section-title" style={{ textAlign: 'left' }}>{homeData.philosophy.title1} <br/><span className="italic">{homeData.philosophy.title2}</span></h2>
               <p>
-                Seperti sebuah karya seni yang dirancang dengan presisi, ekosistem robotika kami memadukan kekuatan mekanis dengan kecerdasan buatan. Kami menolak kompromi dalam hal kualitas dan keandalan.
+                {homeData.philosophy.p1}
               </p>
               <p>
-                Vin Robotik merancang masa depan di mana lini produksi Anda beroperasi dengan <em>zero downtime</em>, akurasi absolut, dan harmoni yang sempurna.
+                <span dangerouslySetInnerHTML={{__html: homeData.philosophy.p2.replace('zero downtime', '<em>zero downtime</em>')}}></span>
               </p>
               <Link to="/about" className="btn-link">
-                Temukan Kisah Kami <ArrowRight size={16} />
+                {homeData.philosophy.link} <ArrowRight size={16} />
               </Link>
             </motion.div>
             
@@ -198,8 +196,8 @@ export default function Home() {
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeUp}
           >
-            <h2 className="section-title">Koleksi <span className="italic">Eksklusif</span></h2>
-            <p className="section-subtitle">Rangkaian mahakarya rekayasa mekanis kami, dirancang khusus untuk memenuhi standar industri presisi tertinggi.</p>
+            <h2 className="section-title">{homeData.collection.title1} <span className="italic">{homeData.collection.title2}</span></h2>
+            <p className="section-subtitle">{homeData.collection.subtitle}</p>
           </motion.div>
 
           <motion.div 
@@ -209,47 +207,25 @@ export default function Home() {
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
           >
-            <motion.div className="collection-card" variants={fadeUp}>
-              <div className="card-image-wrapper">
-                <motion.img 
-                  whileHover={{ scale: 1.1 }} 
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-black.jpg" alt="Titanium Arm" className="image-placeholder" style={{ objectFit: 'cover' }} />
-              </div>
-              <div className="card-content">
-                <h3 className="font-serif">Titanium Arm Series</h3>
-                <p>Presisi mikroskopis untuk perakitan semikonduktor dan elektronik kelas atas.</p>
-                <Link to="/products" className="discover-link">Jelajahi Solusi <ArrowRight size={16}/></Link>
-              </div>
-            </motion.div>
-
-            <motion.div className="collection-card" variants={fadeUp}>
-              <div className="card-image-wrapper">
-                <motion.img 
-                  whileHover={{ scale: 1.1 }} 
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-green.png" alt="V-Cobot Harmony" className="image-placeholder" style={{ objectFit: 'cover' }} />
-              </div>
-              <div className="card-content">
-                <h3 className="font-serif">V-Cobot Harmony</h3>
-                <p>Robot kolaboratif bersertifikasi aman untuk bekerja berdampingan dengan tenaga ahli Anda.</p>
-                <Link to="/products" className="discover-link">Jelajahi Solusi <ArrowRight size={16}/></Link>
-              </div>
-            </motion.div>
-
-            <motion.div className="collection-card" variants={fadeUp}>
-              <div className="card-image-wrapper">
-                <motion.img 
-                  whileHover={{ scale: 1.1 }} 
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  src="/robot-boxy.png" alt="Aero AMR Fleet" className="image-placeholder" style={{ objectFit: 'cover' }} />
-              </div>
-              <div className="card-content">
-                <h3 className="font-serif">Aero AMR Fleet</h3>
-                <p>Armada logistik otonom berkelas enterprise untuk manajemen gudang tanpa henti.</p>
-                <Link to="/products" className="discover-link">Jelajahi Solusi <ArrowRight size={16}/></Link>
-              </div>
-            </motion.div>
+            {[
+              { img: "/robot-black.jpg", item: homeData.collection.items[0] },
+              { img: "/robot-green.png", item: homeData.collection.items[1] },
+              { img: "/robot-boxy.png", item: homeData.collection.items[2] }
+            ].map((col, i) => (
+              <motion.div key={i} className="collection-card" variants={fadeUp}>
+                <div className="card-image-wrapper">
+                  <motion.img 
+                    whileHover={{ scale: 1.1 }} 
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    src={col.img} alt={col.item.title} className="image-placeholder" style={{ objectFit: 'cover' }} />
+                </div>
+                <div className="card-content">
+                  <h3 className="font-serif">{col.item.title}</h3>
+                  <p>{col.item.desc}</p>
+                  <Link to="/products" className="discover-link">{homeData.collection.link} <ArrowRight size={16}/></Link>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -274,29 +250,21 @@ export default function Home() {
               viewport={{ once: true }}
               variants={fadeUp}
             >
-              <h2 className="section-title" style={{ textAlign: 'left' }}>Layanan <span className="italic">VVIP</span></h2>
+              <h2 className="section-title" style={{ textAlign: 'left' }}>{homeData.experience.title1} <span className="italic">{homeData.experience.title2}</span></h2>
               <ul className="luxury-list">
-                <li>
-                  <Star size={24} className="text-primary"/>
-                  <div>
-                    <h4 className="font-serif">Integrasi Tanpa Gangguan</h4>
-                    <p>Tim ahli kami memastikan transisi sistem dilakukan tanpa menghentikan lini produksi Anda sedikit pun, menjaga alur kerja tetap prima.</p>
-                  </div>
-                </li>
-                <li>
-                  <Shield size={24} className="text-primary"/>
-                  <div>
-                    <h4 className="font-serif">Proteksi Elite</h4>
-                    <p>Garansi perangkat keras seumur hidup yang didukung dengan sistem pemantauan prediktif berbasis AI selama 24 jam penuh setiap harinya.</p>
-                  </div>
-                </li>
-                <li>
-                  <Clock size={24} className="text-primary"/>
-                  <div>
-                    <h4 className="font-serif">Dukungan Concierge</h4>
-                    <p>Layanan purna jual khusus layaknya concierge hotel bintang lima, siap merespons setiap kebutuhan operasional Anda secara instan.</p>
-                  </div>
-                </li>
+                {[
+                  { icon: <Star size={24} className="text-primary"/>, item: homeData.experience.items[0] },
+                  { icon: <Shield size={24} className="text-primary"/>, item: homeData.experience.items[1] },
+                  { icon: <Clock size={24} className="text-primary"/>, item: homeData.experience.items[2] }
+                ].map((exp, i) => (
+                  <li key={i}>
+                    {exp.icon}
+                    <div>
+                      <h4 className="font-serif">{exp.item.title}</h4>
+                      <p>{exp.item.desc}</p>
+                    </div>
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>
@@ -308,13 +276,13 @@ export default function Home() {
         <div className="cta-overlay"></div>
         <div className="container cta-content">
           <motion.h2 className="font-serif" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            Siap Memasuki Era <br/><span className="italic">Kesempurnaan?</span>
+            {homeData.cta.title1} <br/><span className="italic">{homeData.cta.title2}</span>
           </motion.h2>
           <motion.p initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            Jadwalkan konsultasi eksklusif dengan Principal Engineer kami hari ini.
+            {homeData.cta.desc}
           </motion.p>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <Link to="/contact" className="btn btn-primary">Reservasi Konsultasi</Link>
+            <Link to="/contact" className="btn btn-primary">{homeData.cta.btn}</Link>
           </motion.div>
         </div>
       </section>
