@@ -1,23 +1,13 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Search, MessageCircle } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './FAQ.css';
 
 export default function FAQ() {
-  const faqs = [
-    {
-      question: 'Berapa lama estimasi pengembalian modal (ROI) investasi robotika ini?',
-      answer: 'Rata-rata klien kami mencapai pemulihan investasi (ROI) dalam kurun waktu 12 hingga 24 bulan, tergantung skala integrasi dan jam operasional pabrik.'
-    },
-    {
-      question: 'Apakah robot dapat dioperasikan oleh karyawan yang tidak memiliki latar belakang pemrograman?',
-      answer: 'Ya. Robot seri Cobot dan AMR kami dilengkapi dengan antarmuka grafis yang intuitif (GUI) dan fitur drag-and-drop, serta dukungan pelatihan dari tim kami.'
-    },
-    {
-      question: 'Bagaimana jika terjadi kendala teknis pada mesin robot?',
-      answer: 'Kami menyediakan modul diagnostik jarak jauh (remote diagnostics) untuk penanganan instan, serta dukungan teknisi lapangan langsung untuk perbaikan fisik.'
-    }
-  ];
+  const { t } = useLanguage();
+  const faqData = t('faq');
+  const faqs = faqData.list;
 
   const [activeIndex, setActiveIndex] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -35,15 +25,15 @@ export default function FAQ() {
     <div className="page-wrapper faq-page">
       <section className="faq-hero">
         <div className="container text-center">
-          <h1 className="section-title">Pusat Bantuan <span className="italic">Terpadu</span></h1>
-          <p className="section-subtitle">Temukan jawaban teknis atau hubungi concierge VVIP kami secara langsung.</p>
+          <h1 className="section-title">{faqData.hero.title1} <span className="italic">{faqData.hero.title2}</span></h1>
+          <p className="section-subtitle">{faqData.hero.subtitle}</p>
           
           <div className="faq-search-container">
             <Search size={20} className="search-icon text-muted" />
             <input 
               type="text" 
               className="faq-search-input font-serif" 
-              placeholder="Cari topik (contoh: instalasi, keamanan, garansi...)" 
+              placeholder={faqData.hero.placeholder} 
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -90,7 +80,7 @@ export default function FAQ() {
               </motion.div>
             )) : (
               <div className="text-center text-muted" style={{padding: '3rem 0'}}>
-                <p>Topik tidak ditemukan. Silakan hubungi Concierge kami.</p>
+                <p>{faqData.notFound}</p>
               </div>
             )}
           </div>
@@ -98,7 +88,7 @@ export default function FAQ() {
       </section>
 
       {/* Floating Chat Button Mockup */}
-      <div className="floating-chat" onClick={() => alert("Menghubungkan ke VVIP Concierge...")}>
+      <div className="floating-chat" onClick={() => alert(faqData.chatAlert)}>
         <MessageCircle size={28} />
       </div>
     </div>

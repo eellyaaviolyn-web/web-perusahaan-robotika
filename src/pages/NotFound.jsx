@@ -1,6 +1,7 @@
 ﻿import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './NotFound.css';
 
 const fadeUp = {
@@ -9,6 +10,8 @@ const fadeUp = {
 };
 
 export default function NotFound() {
+  const { t } = useLanguage();
+  const nfData = t('notFound');
   return (
     <div className="notfound-page">
       <motion.div
@@ -19,15 +22,14 @@ export default function NotFound() {
       >
         <motion.span className="notfound-code font-serif" variants={fadeUp}>404</motion.span>
         <motion.h1 className="font-serif" variants={fadeUp}>
-          Halaman Tidak<br /><span className="italic">Ditemukan</span>
+          {nfData.title1}<br /><span className="italic">{nfData.title2}</span>
         </motion.h1>
-        <motion.p variants={fadeUp}>
-          Halaman yang Anda cari tidak tersedia atau telah dipindahkan.<br />
-          Kembali ke halaman utama dan lanjutkan eksplorasi.
+        <motion.p variants={fadeUp} style={{ whiteSpace: 'pre-line' }}>
+          {nfData.desc}
         </motion.p>
         <motion.div variants={fadeUp}>
           <Link to="/" className="btn btn-primary">
-            Kembali ke Beranda <ArrowRight size={16} style={{ marginLeft: 8 }} />
+            {nfData.btn} <ArrowRight size={16} style={{ marginLeft: 8 }} />
           </Link>
         </motion.div>
       </motion.div>

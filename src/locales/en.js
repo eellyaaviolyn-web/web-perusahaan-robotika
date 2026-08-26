@@ -303,3 +303,413 @@ en.simulator = {
     btn: "Schedule Free Consultation"
   }
 };
+
+en.careers = {
+  hero: {
+    title1: "Shape the Future of",
+    title2: "Automation",
+    subtitle: "Join the best minds in AI and Mechatronics to redefine the boundaries of industrial capabilities."
+  },
+  culture: {
+    title1: "Culture of",
+    title2: "Vin Robotik",
+    subtitle: "We don't just build machines; we build an intellectual ecosystem where radical ideas are realized.",
+    items: [
+      { title: "Speed & Precision", desc: "We move like the machines we build. Fast in experimentation, precise in execution." },
+      { title: "Radical Collaboration", desc: "There are no walls between hardware and software divisions. Everything merges to create mechanical works of art." },
+      { title: "Global Scale Impact", desc: "The code you write today will control the production lines of giant factories across continents tomorrow." },
+      { title: "Holistic Wellness", desc: "World-class premium insurance, flexible time freedom, and relaxation spaces to reset your creativity." }
+    ]
+  },
+  jobs: {
+    title1: "Open",
+    title2: "Positions",
+    applyBtn: "Click to Apply",
+    notMatch: "Can't find a suitable position? Send your CV to",
+    list: [
+      { title: "Senior AI Vision Engineer", location: "Jakarta, ID / Hybrid", type: "Full-Time" },
+      { title: "Robotics Mechatronics Lead", location: "Jakarta, ID", type: "Full-Time" },
+      { title: "B2B Enterprise Account Executive", location: "Singapore, SG", type: "Full-Time" },
+      { title: "Embedded Systems Developer", location: "Remote (APAC)", type: "Contract" }
+    ]
+  },
+  modal: {
+    title: "Submit Application",
+    position: "Position:",
+    name: "Full Name",
+    namePlace: "e.g., John Doe",
+    email: "Email Address",
+    emailPlace: "john@example.com",
+    portofolio: "LinkedIn / Portfolio URL",
+    portofolioPlace: "https://linkedin.com/in/...",
+    cv: "Google Drive CV / Resume Link",
+    cvPlace: "https://drive.google.com/file/d/...",
+    cvNote: "*Ensure your Google Drive link access is set to \"Anyone with the link\".",
+    btnSending: "Sending...",
+    btnSubmit: "Submit Application Now",
+    successTitle: "Application Successfully Sent!",
+    successDesc: "Thank you for your interest. Our recruitment team will review your profile and contact you shortly."
+  },
+  messages: {
+    failConn: "Connection failed. Please check your internet.",
+    failApi: "Failed:"
+  }
+};
+
+en.journal = {
+  hero: {
+    title1: "Innovation",
+    title2: "Journal",
+    subtitle: "Real stories of transformation behind the doors of the world's largest factories."
+  },
+  featured: {
+    meta: "AUTOMOTIVE MANUFACTURING • 2025",
+    title: "Reducing Scrap Costs by 94% in the First Quarter",
+    desc: "How the integration of 40 Titanium Arm units in an EV (Electric Vehicle) assembly line successfully eliminated micro-welding defects entirely and accelerated production output by 40%.",
+    btn: "Read Journal"
+  },
+  items: [
+    {
+      meta: "ELECTRONICS • 2026",
+      title: "New Era of Micro Assembly",
+      desc: "±0.01mm precision of V-Cobot Harmony in assembling semiconductor circuits without excessive dust rooms.",
+      link: "electronics"
+    },
+    {
+      meta: "LOGISTICS • 2026",
+      title: "Autonomous Warehouse Management",
+      desc: "Deploying 100+ Aero AMRs that increased daily delivery volume by 300% at an e-commerce facility.",
+      link: "logistics"
+    },
+    {
+      meta: "PHARMA & MEDICAL • 2025",
+      title: "100% Sterilization with Cobots",
+      desc: "Automating vaccine packaging using medical-grade titanium robotic arms resistant to pure chemical corrosion.",
+      link: "medical"
+    },
+    {
+      meta: "AEROSPACE • 2024",
+      title: "Future Jet Turbine Precision",
+      desc: "Calibration of commercial aircraft turbine blade installations requiring zero-error tolerance levels using our AI sensors.",
+      link: "aerospace"
+    }
+  ],
+  whitepapers: {
+    title1: "Research",
+    title2: "Reports",
+    subtitle: "Download the latest technical whitepapers and industry trend analysis reports published by the Vin Robotik research team.",
+    btn: "Download PDF",
+    list: [
+      {
+        title: "2030 Automation Projection",
+        desc: "A comprehensive analysis of workforce shifts and AI integration in the coming decade."
+      },
+      {
+        title: "ISO/TS 15066 Cobot Safety",
+        desc: "In-depth technical guide on regulations for physical interaction between industrial machines and humans."
+      },
+      {
+        title: "Digital Twin Architecture",
+        desc: "How virtual factory simulation (Digital Twin) can reduce trial-and-error costs by up to 80%."
+      }
+    ]
+  },
+  newsletter: {
+    title: "Exclusive Industry Insights",
+    desc: "Subscribe to receive technology updates, case studies, and invitations to our closed webinars.",
+    placeholder: "Company Email Address",
+    btn: "Subscribe"
+  },
+  modal: {
+    alertUpdates: "We apologize, this document is currently being updated by our research team and will be available soon.",
+    title: "Access Exclusive Report",
+    downloading: "You are about to download:",
+    instruction: "Please enter your company email. The PDF download link will be sent instantly.",
+    namePlace: "Full Name",
+    emailPlace: "Company Email",
+    btnSending: "PREPARING DOCUMENT...",
+    btnSubmit: "Download Now",
+    privacy: "Your information is safe with us.",
+    successTitle: "Request Received",
+    successDesc: "Thank you! This technical document will be sent to your Company Email shortly after our team's verification process."
+  }
+};
+
+en.journalDetail = {
+  backBtn: "Back to Journal",
+  cta: "Consult for Similar Case Studies",
+  data: {
+    automotive: {
+      meta: "AUTOMOTIVE MANUFACTURING • JAKARTA, 2025",
+      title: "Reducing Scrap Costs by 94% in the First Quarter",
+      lead: "How the integration of 40 Titanium Arm units in an EV (Electric Vehicle) assembly line successfully eliminated micro-welding defects and saved millions of dollars for our automotive client.",
+      image: "/car_assembly.jpg",
+      content: [
+        {
+          heading: "Extreme Challenges on the Frontline",
+          paragraphs: [
+            "In the electric vehicle (EV) manufacturing industry, precision is not a luxury—it is an absolute safety requirement. Our client, one of the leading EV manufacturers in Southeast Asia, faced a scrap rate of 4.2% on aluminum chassis weld joints. Every micro-error costs thousands of dollars in wasted material.",
+            "They needed a solution that was not only fast but had absolute consistency beyond the capabilities of even the best human operators."
+          ]
+        },
+        {
+          heading: "Vin Robotik Intervention",
+          paragraphs: [
+            "Our Principal Engineering team conducted a 72-hour audit at the client's facility. Our solution was clear: Replace the legacy systems with 40 custom-configured Titanium Arm Series (T-900) units equipped with millisecond thermal sensors.",
+            "With repeatability up to ±0.02 mm, our robotic arms perform high-precision welding without vibration, while simultaneously measuring the temperature of molten aluminum in real-time using AI."
+          ],
+          quote: "We didn't just install mechanical arms; we implanted an intelligent nervous system into the heart of their factory."
+        },
+        {
+          heading: "Results that Speak",
+          paragraphs: [
+            "In just three months (one quarter) after the zero-downtime transition, the results exceeded the targeted metrics:"
+          ],
+          list: [
+            "Scrap Rate: Dropped drastically from 4.2% to 0.25% (94% Reduction).",
+            "Throughput: Increased daily assembly volume by 28%.",
+            "ROI: Full system investment payback in the 7th month."
+          ],
+          conclusion: "Vin Robotik once again proves that high-end automation is not just an auxiliary tool, but the primary driver of absolute profitability."
+        }
+      ]
+    },
+    electronics: {
+      meta: "ELECTRONICS • TOKYO, 2026",
+      title: "New Era of Semiconductor Micro Assembly",
+      lead: "±0.01mm precision of V-Cobot Harmony in assembling ultra-high resolution semiconductor circuits without excessive dust rooms.",
+      image: "/micro_chip.jpg",
+      content: [
+        {
+          heading: "The Limits of Nano-Scale Assembly Physics",
+          paragraphs: [
+            "The semiconductor industry continues to shrink component sizes. Manufacturers in Tokyo found that even the slightest vibration from their conventional robotic systems caused a high rate of microscopic failures when assembling extreme-density silicon wafers."
+          ]
+        },
+        {
+          heading: "V-Cobot Harmony Injection",
+          paragraphs: [
+            "The solution was to deploy V-Cobot Harmony equipped with our Magnetic Servo. Without conventional mechanical gears, this arm moves smoothly, virtually friction-free."
+          ],
+          quote: "Micrometer-level precision cannot be achieved by forcing old technology. It requires a new mechanical paradigm."
+        },
+        {
+          heading: "Unmatched Efficiency",
+          paragraphs: [
+            "As a result, the yield rate (assembly success rate) skyrocketed to 99.98%."
+          ],
+          list: [
+            "Failure Rate: Reduced to almost zero.",
+            "Assembly Speed: 2x faster than previous systems."
+          ],
+          conclusion: "Precision robotic systems are the differentiator between surviving companies and market-leading companies."
+        }
+      ]
+    },
+    logistics: {
+      meta: "LOGISTICS • SINGAPORE, 2026",
+      title: "Advanced Autonomous Warehouse Management",
+      lead: "How a fleet of 100+ Aero AMRs disrupted the management of a giant e-commerce facility.",
+      image: "/warehouse_amr.jpg",
+      content: [
+        {
+          heading: "E-Commerce Distribution Line Bottlenecks",
+          paragraphs: [
+            "With transaction volumes exceeding 2 million packages per day, our logistics client faced a bottleneck crisis at their sorting center."
+          ]
+        },
+        {
+          heading: "Aero AMR Swarm Intelligence",
+          paragraphs: [
+            "We deployed 150 Aero AMR units controlled by centralized AI Swarm Intelligence. They don't run on fixed paths but maneuver dynamically like a swarm of bees."
+          ],
+          quote: "These are no longer just robots moving goods, this is the orchestration of millions of data points moving on the factory floor."
+        },
+        {
+          heading: "Performance Results",
+          paragraphs: [
+            "This transformation created a true non-stop facility:"
+          ],
+          list: [
+            "Volume Increase: 300% more packages processed per hour.",
+            "Sorting Accuracy: 100% without misdirection."
+          ],
+          conclusion: "The warehouse of the future is not controlled by humans, but orchestrated by logistics AI."
+        }
+      ]
+    },
+    medical: {
+      meta: "PHARMA & MEDICAL • FRANKFURT, 2025",
+      title: "100% Sterilization with Medical Robotic Arms",
+      lead: "Automating vaccine packaging using medical-grade titanium robotic arms resistant to pure chemical corrosion.",
+      image: "/factory_luxury.jpg",
+      content: [
+        {
+          heading: "High-Level Purity Standards",
+          paragraphs: [
+            "Vaccine manufacturers require an ISO Class 1 cleanroom environment where microscopic dust can destroy entire multi-million dollar production batches."
+          ]
+        },
+        {
+          heading: "Pure Titanium",
+          paragraphs: [
+            "We use solid titanium robotic arms without external lubricants. All seals are made of special vacuum-grade materials."
+          ],
+          quote: "Bacteria cannot live on the machines we design, and dust will never escape from them."
+        },
+        {
+          heading: "Long-Term Impact",
+          paragraphs: [
+            "Clients can operate 24 hours a day within a sterile facility with absolutely no human intervention required during the packing process."
+          ],
+          list: [
+            "Cross Contamination: 0%.",
+            "Production Capacity: 45 Million Vials per month."
+          ],
+          conclusion: "We protect life by ensuring medicines are assembled in absolute mechanical purity."
+        }
+      ]
+    },
+    aerospace: {
+      meta: "AEROSPACE • TOULOUSE, 2024",
+      title: "Future Jet Turbine Precision",
+      lead: "Calibration of commercial aircraft turbine blade installations requiring zero-error tolerance levels using our AI sensors.",
+      image: "/jet_turbine_robot.jpg",
+      content: [
+        {
+          heading: "The Highest Safety Stakes",
+          paragraphs: [
+            "Jet turbine blades spin at tens of thousands of RPMs. A 1-gram imbalance can tear the engine apart in mid-air."
+          ]
+        },
+        {
+          heading: "Micrometer AI Vision",
+          paragraphs: [
+            "Our industrial robots are paired with optical laser cameras that scan and place turbine blades while simultaneously measuring screw pressure."
+          ],
+          quote: "For us, building an aircraft turbine is like assembling a giant precision watch masterpiece."
+        },
+        {
+          heading: "Operational Results",
+          paragraphs: [
+            "Manual installation takes days. Our system does it in hours."
+          ],
+          list: [
+            "Time Efficiency: Reduced by 75%.",
+            "Safety Level: Certified beyond the highest FAA and EASA standards."
+          ],
+          conclusion: "The skies become safer when the engines that carry them are assembled by emotionless precision."
+        }
+      ]
+    }
+  }
+};
+
+en.productDetail = {
+  backBtn: "Back to Collection",
+  mode360: "360° Mode",
+  btnReserve: "Reserve Unit",
+  btnConsult: "Integration Consultation",
+  specTitle: "Technical Specifications",
+  featTitle: "Key Features",
+  simTitle: "Rotation Simulation",
+  simLabel: "Interactive Rotate:",
+  data: {
+    'titanium-arm': {
+      name: 'Titanium Arm Series (T-900)',
+      category: 'HEAVY MANUFACTURING SERIES',
+      image: '/robot-black.jpg',
+      desc: 'Designed to withstand extreme loads in harsh factory environments. The solid titanium joint system provides torque speed without the slightest vibration. Features microscopic precision for heavy assembly as well as semiconductors thanks to a self-calibrating system.',
+      specs: {
+        'Max Payload': '800 Kg',
+        'Maximum Reach': '3.5 Meters',
+        'Repeatability': '±0.02 mm',
+        'Operating Temp': '-10°C to 55°C',
+        'Power Supply': '380V 3-Phase',
+        'Controller': 'Vin-Core 9.0'
+      },
+      features: [
+        '100% Titanium Alloy Construction',
+        'Liquid-Active Cooling System',
+        'Integrated 6-Axis Torque Sensor',
+        'Lifetime Hardware Warranty'
+      ]
+    },
+    'v-cobot': {
+      name: 'V-Cobot Harmony (C-20)',
+      category: 'COLLABORATIVE ROBOTICS (COBOT)',
+      image: '/robot-green.png',
+      desc: 'Perfection working side-by-side. Equipped with a capacitive sensor skin that detects the slightest touch, ensuring absolute safety for human operators nearby without the need for safety fences.',
+      specs: {
+        'Payload': '20 Kg',
+        'Reach': '1.3 Meters',
+        'Safety Protocol': 'ISO/TS 15066 Certified',
+        'Programming': 'Drag-and-Drop GUI',
+        'Weight': '32 Kg',
+        'Joint Speed': '120°/s'
+      },
+      features: [
+        'Touch-Sensitive Capacitive Skin',
+        'Robot Training via Physical Demonstration (Lead-through)',
+        'Built-in AI Vision System',
+        'Plug-and-Play Installation in 30 Minutes'
+      ]
+    },
+    'aero-amr': {
+      name: 'Aero AMR Fleet (A-X)',
+      category: 'AUTONOMOUS LOGISTICS SYSTEM',
+      image: '/robot-boxy.png',
+      desc: 'The logistics architecture of the future. A fleet of intelligent autonomous vehicles capable of mapping warehouse dynamics in real-time using 3D LIDAR and hybrid navigation systems, eliminating logistics bottlenecks autonomously.',
+      specs: {
+        'Max Payload': '1,500 Kg',
+        'Battery Life': '14 Hours (Fast Charge)',
+        'Navigation': '3D SLAM & Visual Odometry',
+        'Max Speed': '2.5 m/s',
+        'Charge Time': '45 Minutes (0-80%)',
+        'Communication': '5G / Wi-Fi 6'
+      },
+      features: [
+        '360° LIDAR with Zero Blind Spots',
+        'AI Obstacle Avoidance System',
+        'Cloud Fleet Management (Up to 500 Units)',
+        'Autonomous Charging'
+      ]
+    }
+  }
+};
+
+en.faq = {
+  hero: {
+    title1: "Integrated Support",
+    title2: "Center",
+    subtitle: "Find technical answers or contact our VVIP concierge directly.",
+    placeholder: "Search topics (e.g., installation, safety, warranty...)"
+  },
+  list: [
+    {
+      question: "What is the estimated Return on Investment (ROI) for this robotics implementation?",
+      answer: "Our clients achieve an average ROI within 12 to 24 months, depending on the scale of integration and factory operating hours."
+    },
+    {
+      question: "Can the robots be operated by employees without a programming background?",
+      answer: "Yes. Our Cobot and AMR series are equipped with an intuitive graphical user interface (GUI) and drag-and-drop features, along with full training support from our team."
+    },
+    {
+      question: "What happens if there are technical issues with the robot machines?",
+      answer: "We provide remote diagnostics modules for instant handling, as well as direct field technician support for physical repairs."
+    }
+  ],
+  notFound: "Topic not found. Please contact our Concierge.",
+  chatAlert: "Connecting to VVIP Concierge..."
+};
+
+en.notFound = {
+  title1: "Page Not",
+  title2: "Found",
+  desc: "The page you are looking for is unavailable or has been moved.\nReturn to the main page and continue exploring.",
+  btn: "Back to Home"
+};
+
+en.wa = {
+  tooltip: "Chat Now"
+};

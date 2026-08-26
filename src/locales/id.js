@@ -303,3 +303,413 @@ id.simulator = {
     btn: "Jadwalkan Konsultasi Gratis"
   }
 };
+
+id.careers = {
+  hero: {
+    title1: "Bentuk Masa Depan",
+    title2: "Otomasi",
+    subtitle: "Bergabunglah dengan pemikir terbaik di bidang AI dan Mekatronika untuk mendefinisikan ulang batas kemampuan industri."
+  },
+  culture: {
+    title1: "Kultur",
+    title2: "Vin Robotik",
+    subtitle: "Kami tidak hanya membangun mesin; kami membangun ekosistem intelektual tempat ide-ide radikal direalisasikan.",
+    items: [
+      { title: "Kecepatan & Presisi", desc: "Kami bergerak layaknya mesin yang kami buat. Cepat dalam bereksperimen, presisi dalam mengeksekusi." },
+      { title: "Kolaborasi Radikal", desc: "Tidak ada dinding antara divisi hardware dan software. Semuanya melebur demi menciptakan karya seni mekanis." },
+      { title: "Dampak Skala Global", desc: "Kode yang Anda tulis hari ini akan mengendalikan lini produksi pabrik-pabrik raksasa di berbagai benua esok hari." },
+      { title: "Kesejahteraan Holistik", desc: "Asuransi premium kelas dunia, kebebasan waktu fleksibel, dan ruang santai untuk me-reset kreativitas Anda." }
+    ]
+  },
+  jobs: {
+    title1: "Posisi",
+    title2: "Terbuka",
+    applyBtn: "Klik Untuk Melamar",
+    notMatch: "Tidak menemukan posisi yang cocok? Kirimkan CV Anda ke",
+    list: [
+      { title: "Senior AI Vision Engineer", location: "Jakarta, ID / Hybrid", type: "Full-Time" },
+      { title: "Robotics Mechatronics Lead", location: "Jakarta, ID", type: "Full-Time" },
+      { title: "B2B Enterprise Account Executive", location: "Singapore, SG", type: "Full-Time" },
+      { title: "Embedded Systems Developer", location: "Remote (APAC)", type: "Contract" }
+    ]
+  },
+  modal: {
+    title: "Kirim Lamaran",
+    position: "Posisi:",
+    name: "Nama Lengkap",
+    namePlace: "Cth: John Doe",
+    email: "Alamat Email",
+    emailPlace: "john@example.com",
+    portofolio: "URL LinkedIn / Portofolio",
+    portofolioPlace: "https://linkedin.com/in/...",
+    cv: "Link Google Drive CV / Resume",
+    cvPlace: "https://drive.google.com/file/d/...",
+    cvNote: "*Pastikan akses link Google Drive Anda sudah diatur ke \"Anyone with the link\" (Siapa saja yang memiliki tautan).",
+    btnSending: "Mengirim...",
+    btnSubmit: "Kirim Lamaran Sekarang",
+    successTitle: "Lamaran Berhasil Dikirim!",
+    successDesc: "Terima kasih atas ketertarikan Anda. Tim rekrutmen kami akan meninjau profil Anda dan segera menghubungi Anda kembali."
+  },
+  messages: {
+    failConn: "Koneksi gagal. Silakan periksa internet Anda.",
+    failApi: "Gagal:"
+  }
+};
+
+id.journal = {
+  hero: {
+    title1: "Jurnal",
+    title2: "Inovasi",
+    subtitle: "Kisah nyata transformasi di balik pintu pabrik-pabrik terbesar di dunia."
+  },
+  featured: {
+    meta: "MANUFAKTUR OTOMOTIF • 2025",
+    title: "Mereduksi Biaya Scrap Hingga 94% dalam Kuartal Pertama",
+    desc: "Bagaimana integrasi 40 unit Titanium Arm di lini perakitan EV (Electric Vehicle) berhasil mengeliminasi cacat pengelasan mikro sepenuhnya dan mempercepat output produksi sebesar 40%.",
+    btn: "Baca Jurnal"
+  },
+  items: [
+    {
+      meta: "ELEKTRONIK • 2026",
+      title: "Era Baru Perakitan Mikro",
+      desc: "Presisi ±0.01mm V-Cobot Harmony dalam merakit sirkuit semikonduktor tanpa ruang debu berlebih.",
+      link: "electronics"
+    },
+    {
+      meta: "LOGISTIK • 2026",
+      title: "Manajemen Gudang Otonom",
+      desc: "Deploy 100+ Aero AMR yang meningkatkan volume pengiriman harian sebesar 300% pada fasilitas e-commerce.",
+      link: "logistics"
+    },
+    {
+      meta: "FARMASI & MEDIS • 2025",
+      title: "Sterilisasi 100% dengan Cobot",
+      desc: "Otomatisasi pengemasan vaksin menggunakan lengan robot berbahan titanium khusus medis yang tahan terhadap korosi kimia murni.",
+      link: "medical"
+    },
+    {
+      meta: "DIRGANTARA • 2024",
+      title: "Presisi Turbin Jet Masa Depan",
+      desc: "Kalibrasi pemasangan bilah turbin pesawat terbang komersial yang membutuhkan tingkat toleransi nol kesalahan menggunakan sensor AI kami.",
+      link: "aerospace"
+    }
+  ],
+  whitepapers: {
+    title1: "Laporan",
+    title2: "Riset",
+    subtitle: "Unduh whitepaper teknis dan laporan analisis tren industri terbaru yang dipublikasikan oleh tim riset Vin Robotik.",
+    btn: "Unduh PDF",
+    list: [
+      {
+        title: "Proyeksi Otomasi 2030",
+        desc: "Analisis komprehensif mengenai pergeseran tenaga kerja dan integrasi AI dalam dekade mendatang."
+      },
+      {
+        title: "Keamanan Cobot ISO/TS 15066",
+        desc: "Panduan teknis mendalam tentang regulasi interaksi fisik antara mesin industri dan manusia."
+      },
+      {
+        title: "Arsitektur Digital Twin",
+        desc: "Bagaimana simulasi pabrik virtual (Digital Twin) mampu mereduksi biaya trial-and-error hingga 80%."
+      }
+    ]
+  },
+  newsletter: {
+    title: "Wawasan Industri Eksklusif",
+    desc: "Berlangganan untuk menerima pembaruan teknologi, studi kasus, dan undangan ke webinar tertutup kami.",
+    placeholder: "Alamat Email Perusahaan",
+    btn: "Berlangganan"
+  },
+  modal: {
+    alertUpdates: "Mohon maaf, dokumen ini saat ini sedang dalam pembaruan tim riset kami dan akan segera tersedia.",
+    title: "Akses Laporan Eksklusif",
+    downloading: "Anda akan mengunduh:",
+    instruction: "Silakan masukkan email perusahaan Anda. Tautan unduhan PDF akan dikirimkan secara instan.",
+    namePlace: "Nama Lengkap",
+    emailPlace: "Email Perusahaan",
+    btnSending: "MENYIAPKAN DOKUMEN...",
+    btnSubmit: "Unduh Sekarang",
+    privacy: "Informasi Anda aman bersama kami.",
+    successTitle: "Permintaan Diterima",
+    successDesc: "Terima kasih! Dokumen teknis ini akan segera dikirimkan ke Email Perusahaan Anda setelah proses verifikasi tim kami selesai."
+  }
+};
+
+id.journalDetail = {
+  backBtn: "Kembali ke Jurnal",
+  cta: "Konsultasikan Studi Kasus Serupa",
+  data: {
+    automotive: {
+      meta: "MANUFAKTUR OTOMOTIF • JAKARTA, 2025",
+      title: "Mereduksi Biaya Scrap Hingga 94% dalam Kuartal Pertama",
+      lead: "Bagaimana integrasi 40 unit Titanium Arm di lini perakitan EV (Electric Vehicle) berhasil mengeliminasi cacat pengelasan mikro dan menyelamatkan jutaan dolar bagi klien otomotif kami.",
+      image: "/car_assembly.jpg",
+      content: [
+        {
+          heading: "Tantangan Ekstrem di Garis Depan",
+          paragraphs: [
+            "Dalam industri pembuatan kendaraan listrik (EV), presisi bukanlah sebuah kemewahan—melainkan syarat mutlak keselamatan. Klien kami, salah satu pabrikan EV terkemuka di Asia Tenggara, menghadapi tingkat penolakan kualitas (scrap rate) sebesar 4.2% pada sambungan las sasis aluminium. Setiap kesalahan mikro bernilai ribuan dolar akibat material yang terbuang.",
+            "Mereka membutuhkan solusi yang tidak hanya cepat, tetapi memiliki konsistensi absolut yang melampaui kemampuan operator manusia terbaik sekalipun."
+          ]
+        },
+        {
+          heading: "Intervensi Vin Robotik",
+          paragraphs: [
+            "Tim Principal Engineer kami melakukan audit selama 72 jam di fasilitas klien. Solusi kami jelas: Mengganti sistem lama dengan 40 unit Titanium Arm Series (T-900) yang dikonfigurasi khusus dengan sensor termal milidetik.",
+            "Dengan tingkat pengulangan (repeatability) hingga ±0.02 mm, lengan robotik kami melakukan pengelasan presisi tinggi tanpa getaran, sambil secara simultan mengukur suhu lelehan aluminium secara real-time menggunakan AI."
+          ],
+          quote: "Kami tidak hanya memasang lengan mekanik; kami menanamkan sistem saraf cerdas ke dalam jantung pabrik mereka."
+        },
+        {
+          heading: "Hasil yang Berbicara",
+          paragraphs: [
+            "Hanya dalam waktu tiga bulan (satu kuartal) setelah transisi zero-downtime, hasilnya melampaui metrik yang ditargetkan:"
+          ],
+          list: [
+            "Scrap Rate: Turun drastis dari 4.2% menjadi 0.25% (Reduksi 94%).",
+            "Throughput: Peningkatan volume perakitan harian sebesar 28%.",
+            "ROI: Investasi sistem kembali modal sepenuhnya di bulan ke-7."
+          ],
+          conclusion: "Vin Robotik sekali lagi membuktikan bahwa otomasi kelas atas bukan sekadar alat pembantu, melainkan pendorong utama profitabilitas absolut."
+        }
+      ]
+    },
+    electronics: {
+      meta: "ELEKTRONIK • TOKYO, 2026",
+      title: "Era Baru Perakitan Mikro Semikonduktor",
+      lead: "Presisi ±0.01mm V-Cobot Harmony dalam merakit sirkuit semikonduktor beresolusi ultra-tinggi tanpa ruang debu berlebih.",
+      image: "/micro_chip.jpg",
+      content: [
+        {
+          heading: "Batas Fisika Perakitan Skala Nano",
+          paragraphs: [
+            "Industri semikonduktor terus mengecilkan ukuran komponen. Pabrikan di Tokyo mendapati bahwa getaran sekecil apapun dari sistem robotik konvensional mereka menyebabkan tingkat kegagalan mikroskopis yang tinggi saat merakit wafer silikon berdensitas ekstrem."
+          ]
+        },
+        {
+          heading: "Injeksi V-Cobot Harmony",
+          paragraphs: [
+            "Solusinya adalah mendeploy V-Cobot Harmony yang dilengkapi dengan Magnetic Servo kami. Tanpa roda gigi mekanis konvensional, lengan ini bergerak mulus, nyaris tanpa gesekan."
+          ],
+          quote: "Ketepatan di tingkat mikrometer tidak bisa diraih dengan memaksakan teknologi lama. Ia membutuhkan paradigma mekanis baru."
+        },
+        {
+          heading: "Efisiensi Tak Tertandingi",
+          paragraphs: [
+            "Hasilnya, yield rate (tingkat keberhasilan perakitan) melesat ke 99.98%."
+          ],
+          list: [
+            "Tingkat Kegagalan: Berkurang hingga nyaris nol.",
+            "Kecepatan Perakitan: 2x lipat lebih cepat dari sistem sebelumnya."
+          ],
+          conclusion: "Sistem robotik yang presisi adalah pembeda antara perusahaan yang bertahan dan perusahaan yang memimpin pasar."
+        }
+      ]
+    },
+    logistics: {
+      meta: "LOGISTIK • SINGAPURA, 2026",
+      title: "Manajemen Gudang Otonom Tingkat Lanjut",
+      lead: "Bagaimana armada 100+ Aero AMR mendisrupsi manajemen fasilitas e-commerce raksasa.",
+      image: "/warehouse_amr.jpg",
+      content: [
+        {
+          heading: "Kemacetan Jalur Distribusi E-Commerce",
+          paragraphs: [
+            "Dengan volume transaksi menembus 2 juta paket per hari, klien logistik kami menghadapi krisis bottleneck di pusat penyortiran mereka."
+          ]
+        },
+        {
+          heading: "Aero AMR Swarm Intelligence",
+          paragraphs: [
+            "Kami mengerahkan 150 unit Aero AMR yang dikendalikan oleh AI Swarm Intelligence terpusat. Mereka tidak berjalan di jalur tetap, melainkan bermanuver secara dinamis layaknya sekawanan lebah."
+          ],
+          quote: "Ini bukan lagi sekadar robot yang memindahkan barang, ini adalah orkestrasi jutaan data yang bergerak di lantai pabrik."
+        },
+        {
+          heading: "Hasil Kinerja",
+          paragraphs: [
+            "Transformasi ini menciptakan fasilitas tanpa henti sejati:"
+          ],
+          list: [
+            "Peningkatan Volume: 300% paket lebih banyak diproses per jam.",
+            "Akurasi Sortir: 100% tanpa salah alamat."
+          ],
+          conclusion: "Gudang masa depan tidak dikendalikan oleh manusia, tetapi diorkestrasi oleh AI logistik."
+        }
+      ]
+    },
+    medical: {
+      meta: "FARMASI & MEDIS • FRANKFURT, 2025",
+      title: "Sterilisasi 100% dengan Lengan Robot Medis",
+      lead: "Otomatisasi pengemasan vaksin menggunakan lengan robot berbahan titanium khusus medis yang tahan terhadap korosi kimia murni.",
+      image: "/factory_luxury.jpg",
+      content: [
+        {
+          heading: "Standar Kemurnian Tingkat Tinggi",
+          paragraphs: [
+            "Pabrikan vaksin membutuhkan lingkungan cleanroom ISO Kelas 1 di mana debu mikroskopis dapat menghancurkan seluruh batch produksi bernilai jutaan dolar."
+          ]
+        },
+        {
+          heading: "Titanium Murni",
+          paragraphs: [
+            "Kami menggunakan lengan robot berbahan titanium padat tanpa pelumas eksternal. Semua segel terbuat dari materi khusus ruang hampa udara."
+          ],
+          quote: "Bakteri tidak bisa hidup di mesin yang kami desain, dan debu tidak akan pernah keluar darinya."
+        },
+        {
+          heading: "Dampak Jangka Panjang",
+          paragraphs: [
+            "Klien dapat beroperasi 24 jam sehari di dalam fasilitas steril tanpa perlu intervensi manusia sama sekali selama proses packing."
+          ],
+          list: [
+            "Kontaminasi Lintas: 0%.",
+            "Kapasitas Produksi: 45 Juta Vial per bulan."
+          ],
+          conclusion: "Kami melindungi kehidupan dengan memastikan obat-obatan dirakit dalam kemurnian mekanis absolut."
+        }
+      ]
+    },
+    aerospace: {
+      meta: "DIRGANTARA • TOULOUSE, 2024",
+      title: "Presisi Turbin Jet Masa Depan",
+      lead: "Kalibrasi pemasangan bilah turbin pesawat terbang komersial yang membutuhkan tingkat toleransi nol kesalahan menggunakan sensor AI kami.",
+      image: "/jet_turbine_robot.jpg",
+      content: [
+        {
+          heading: "Taruhan Keselamatan Tertinggi",
+          paragraphs: [
+            "Bilah turbin jet bergerak pada putaran puluhan ribu RPM. Ketidakseimbangan seberat 1 gram dapat merobek mesin saat mengudara."
+          ]
+        },
+        {
+          heading: "Penglihatan AI Mikrometer",
+          paragraphs: [
+            "Robot industri kami dipasangkan dengan kamera laser optik yang memindai dan menempatkan bilah turbin sambil mengukur tekanan sekrup secara simultan."
+          ],
+          quote: "Bagi kami, membangun turbin pesawat sama dengan menyusun karya seni jam tangan presisi raksasa."
+        },
+        {
+          heading: "Hasil Operasional",
+          paragraphs: [
+            "Pemasangan manual memakan waktu berhari-hari. Sistem kami melakukannya dalam hitungan jam."
+          ],
+          list: [
+            "Efisiensi Waktu: Berkurang 75%.",
+            "Tingkat Keamanan: Disertifikasi melampaui standar FAA dan EASA tertinggi."
+          ],
+          conclusion: "Langit menjadi lebih aman ketika mesin yang membawanya dirakit oleh presisi tanpa emosi."
+        }
+      ]
+    }
+  }
+};
+
+id.productDetail = {
+  backBtn: "Kembali ke Koleksi",
+  mode360: "Mode 360°",
+  btnReserve: "Reservasi Unit",
+  btnConsult: "Konsultasi Integrasi",
+  specTitle: "Spesifikasi Teknis",
+  featTitle: "Keunggulan Utama",
+  simTitle: "Simulasi Rotasi",
+  simLabel: "Putar Interaktif:",
+  data: {
+    'titanium-arm': {
+      name: 'Titanium Arm Series (T-900)',
+      category: 'SERI MANUFAKTUR BERAT',
+      image: '/robot-black.jpg',
+      desc: 'Dirancang untuk menahan beban ekstrem di lingkungan pabrik yang keras. Sistem sendi berbahan titanium padat memberikan kecepatan torsi tanpa getaran sedikit pun. Memiliki presisi mikroskopis untuk perakitan kelas berat maupun semikonduktor berkat sistem kalibrasi mandiri.',
+      specs: {
+        'Max Payload': '800 Kg',
+        'Maximum Reach': '3.5 Meter',
+        'Repeatability': '±0.02 mm',
+        'Operating Temp': '-10°C to 55°C',
+        'Power Supply': '380V 3-Phase',
+        'Controller': 'Vin-Core 9.0'
+      },
+      features: [
+        'Konstruksi 100% Titanium Alloy',
+        'Sistem Pendingin Liquid-Active',
+        'Sensor Torsi 6-Axis Terintegrasi',
+        'Garansi Perangkat Keras Seumur Hidup'
+      ]
+    },
+    'v-cobot': {
+      name: 'V-Cobot Harmony (C-20)',
+      category: 'ROBOTIK KOLABORATIF (COBOT)',
+      image: '/robot-green.png',
+      desc: 'Kesempurnaan bekerja berdampingan. Dilengkapi dengan balutan kulit sensor kapasitif yang mendeteksi sentuhan sekecil apa pun, memastikan keamanan mutlak bagi operator manusia di sekitarnya tanpa memerlukan pagar pembatas.',
+      specs: {
+        'Payload': '20 Kg',
+        'Reach': '1.3 Meter',
+        'Safety Protocol': 'ISO/TS 15066 Certified',
+        'Programming': 'Drag-and-Drop GUI',
+        'Weight': '32 Kg',
+        'Joint Speed': '120°/s'
+      },
+      features: [
+        'Kulit Kapasitif Sensitif Sentuhan',
+        'Pelatihan Robot dengan Demonstrasi Fisik (Lead-through)',
+        'Sistem Visi AI Bawaan',
+        'Instalasi Plug-and-Play dalam 30 Menit'
+      ]
+    },
+    'aero-amr': {
+      name: 'Aero AMR Fleet (A-X)',
+      category: 'SISTEM LOGISTIK OTONOM',
+      image: '/robot-boxy.png',
+      desc: 'Arsitektur logistik masa depan. Armada mobil otonom cerdas yang mampu memetakan dinamika gudang secara real-time menggunakan LIDAR 3D dan sistem navigasi hibrida, mengeliminasi kemacetan logistik secara otonom.',
+      specs: {
+        'Max Payload': '1,500 Kg',
+        'Battery Life': '14 Jam (Fast Charge)',
+        'Navigation': '3D SLAM & Visual Odometry',
+        'Max Speed': '2.5 m/s',
+        'Charge Time': '45 Menit (0-80%)',
+        'Communication': '5G / Wi-Fi 6'
+      },
+      features: [
+        'LIDAR 360° Tanpa Titik Buta',
+        'Sistem Penghindaran Rintangan AI',
+        'Manajemen Armada Cloud (Hingga 500 Unit)',
+        'Pengisian Daya Otonom'
+      ]
+    }
+  }
+};
+
+id.faq = {
+  hero: {
+    title1: "Pusat Bantuan",
+    title2: "Terpadu",
+    subtitle: "Temukan jawaban teknis atau hubungi concierge VVIP kami secara langsung.",
+    placeholder: "Cari topik (contoh: instalasi, keamanan, garansi...)"
+  },
+  list: [
+    {
+      question: "Berapa lama estimasi pengembalian modal (ROI) investasi robotika ini?",
+      answer: "Rata-rata klien kami mencapai pemulihan investasi (ROI) dalam kurun waktu 12 hingga 24 bulan, tergantung skala integrasi dan jam operasional pabrik."
+    },
+    {
+      question: "Apakah robot dapat dioperasikan oleh karyawan yang tidak memiliki latar belakang pemrograman?",
+      answer: "Ya. Robot seri Cobot dan AMR kami dilengkapi dengan antarmuka grafis yang intuitif (GUI) dan fitur drag-and-drop, serta dukungan pelatihan dari tim kami."
+    },
+    {
+      question: "Bagaimana jika terjadi kendala teknis pada mesin robot?",
+      answer: "Kami menyediakan modul diagnostik jarak jauh (remote diagnostics) untuk penanganan instan, serta dukungan teknisi lapangan langsung untuk perbaikan fisik."
+    }
+  ],
+  notFound: "Topik tidak ditemukan. Silakan hubungi Concierge kami.",
+  chatAlert: "Menghubungkan ke VVIP Concierge..."
+};
+
+id.notFound = {
+  title1: "Halaman Tidak",
+  title2: "Ditemukan",
+  desc: "Halaman yang Anda cari tidak tersedia atau telah dipindahkan.\nKembali ke halaman utama dan lanjutkan eksplorasi.",
+  btn: "Kembali ke Beranda"
+};
+
+id.wa = {
+  tooltip: "Chat Sekarang"
+};

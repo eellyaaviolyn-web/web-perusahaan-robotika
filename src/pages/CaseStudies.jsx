@@ -1,8 +1,9 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, FileText, Download, Mail, X, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 import './CaseStudies.css';
 
 const fadeUp = {
@@ -11,6 +12,9 @@ const fadeUp = {
 };
 
 export default function CaseStudies() {
+  const { t, language } = useLanguage();
+  const journalData = t('journal');
+  
   const [showModal, setShowModal] = useState(false);
   const [selectedPaper, setSelectedPaper] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,8 +28,10 @@ export default function CaseStudies() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     
-    if (selectedPaper !== 'Proyeksi Otomasi 2030') {
-      alert(`Mohon maaf, dokumen "${selectedPaper}" saat ini sedang dalam pembaruan tim riset kami dan akan segera tersedia.`);
+    // In original code, the logic was bound to the exact string 'Proyeksi Otomasi 2030'.
+    // We check against both ID and EN titles for the first report.
+    if (selectedPaper !== journalData.whitepapers.list[0].title) {
+      alert(journalData.modal.alertUpdates);
       setShowModal(false);
       return;
     }
@@ -86,10 +92,10 @@ export default function CaseStudies() {
       <section className="page-hero">
         <div className="container">
           <motion.h1 className="font-serif page-title" initial="hidden" animate="visible" variants={fadeUp}>
-            Jurnal <span className="italic">Inovasi</span>
+            {journalData.hero.title1} <span className="italic">{journalData.hero.title2}</span>
           </motion.h1>
           <motion.p className="page-subtitle" initial="hidden" animate="visible" variants={fadeUp} transition={{ delay: 0.2 }}>
-            Kisah nyata transformasi di balik pintu pabrik-pabrik terbesar di dunia.
+            {journalData.hero.subtitle}
           </motion.p>
         </div>
       </section>
@@ -102,67 +108,30 @@ export default function CaseStudies() {
             {/* Featured */}
             <motion.article className="journal-card featured" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
               <div className="journal-image-container">
-                <img src="/car_assembly.jpg" alt="Manufaktur Otomotif" className="journal-image" />
+                <img src="/car_assembly.jpg" alt={journalData.featured.title} className="journal-image" />
               </div>
               <div className="journal-content">
-                <span className="journal-meta">MANUFAKTUR OTOMOTIF • 2025</span>
-                <h2 className="font-serif">Mereduksi Biaya Scrap Hingga 94% dalam Kuartal Pertama</h2>
-                <p>Bagaimana integrasi 40 unit Titanium Arm di lini perakitan EV (Electric Vehicle) berhasil mengeliminasi cacat pengelasan mikro sepenuhnya dan mempercepat output produksi sebesar 40%.</p>
-                <Link to="/casestudies/automotive" className="read-more">Baca Jurnal <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
+                <span className="journal-meta">{journalData.featured.meta}</span>
+                <h2 className="font-serif">{journalData.featured.title}</h2>
+                <p>{journalData.featured.desc}</p>
+                <Link to="/casestudies/automotive" className="read-more">{journalData.featured.btn} <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
               </div>
             </motion.article>
 
-            {/* Standard 1 */}
-            <motion.article className="journal-card" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
-              <div className="journal-image-container">
-                <img src="/micro_chip.jpg" alt="Era Baru Perakitan Mikro" className="journal-image" />
-              </div>
-              <div className="journal-content">
-                <span className="journal-meta">ELEKTRONIK • 2026</span>
-                <h3 className="font-serif">Era Baru Perakitan Mikro</h3>
-                <p>Presisi ±0.01mm V-Cobot Harmony dalam merakit sirkuit semikonduktor tanpa ruang debu berlebih.</p>
-                <Link to="/casestudies/electronics" className="read-more">Baca Jurnal <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
-              </div>
-            </motion.article>
-
-            {/* Standard 2 */}
-            <motion.article className="journal-card" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} transition={{ delay: 0.2 }}>
-              <div className="journal-image-container">
-                <img src="/warehouse_amr.jpg" alt="Manajemen Gudang Otonom" className="journal-image" />
-              </div>
-              <div className="journal-content">
-                <span className="journal-meta">LOGISTIK • 2026</span>
-                <h3 className="font-serif">Manajemen Gudang Otonom</h3>
-                <p>Deploy 100+ Aero AMR yang meningkatkan volume pengiriman harian sebesar 300% pada fasilitas e-commerce.</p>
-                <Link to="/casestudies/logistics" className="read-more">Baca Jurnal <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
-              </div>
-            </motion.article>
-
-            {/* Standard 3 */}
-            <motion.article className="journal-card" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
-              <div className="journal-image-container">
-                <img src="/factory_luxury.jpg" alt="Farmasi & Medis" className="journal-image" />
-              </div>
-              <div className="journal-content">
-                <span className="journal-meta">FARMASI & MEDIS • 2025</span>
-                <h3 className="font-serif">Sterilisasi 100% dengan Cobot</h3>
-                <p>Otomatisasi pengemasan vaksin menggunakan lengan robot berbahan titanium khusus medis yang tahan terhadap korosi kimia murni.</p>
-                <Link to="/casestudies/medical" className="read-more">Baca Jurnal <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
-              </div>
-            </motion.article>
-
-            {/* Standard 4 */}
-            <motion.article className="journal-card" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} transition={{ delay: 0.2 }}>
-              <div className="journal-image-container">
-                <img src="/jet_turbine_robot.jpg" alt="Aviasi & Dirgantara" className="journal-image" />
-              </div>
-              <div className="journal-content">
-                <span className="journal-meta">DIRGANTARA • 2024</span>
-                <h3 className="font-serif">Presisi Turbin Jet Masa Depan</h3>
-                <p>Kalibrasi pemasangan bilah turbin pesawat terbang komersial yang membutuhkan tingkat toleransi nol kesalahan menggunakan sensor AI kami.</p>
-                <Link to="/casestudies/aerospace" className="read-more">Baca Jurnal <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
-              </div>
-            </motion.article>
+            {/* Standard Items */}
+            {journalData.items.map((item, index) => (
+              <motion.article key={index} className="journal-card" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} transition={{ delay: index % 2 === 0 ? 0 : 0.2 }}>
+                <div className="journal-image-container">
+                  <img src={index === 0 ? "/micro_chip.jpg" : index === 1 ? "/warehouse_amr.jpg" : index === 2 ? "/factory_luxury.jpg" : "/jet_turbine_robot.jpg"} alt={item.title} className="journal-image" />
+                </div>
+                <div className="journal-content">
+                  <span className="journal-meta">{item.meta}</span>
+                  <h3 className="font-serif">{item.title}</h3>
+                  <p>{item.desc}</p>
+                  <Link to={`/casestudies/${item.link}`} className="read-more">{journalData.featured.btn} <ArrowRight size={16} style={{marginLeft: '8px'}} /></Link>
+                </div>
+              </motion.article>
+            ))}
 
           </div>
         </div>
@@ -172,31 +141,19 @@ export default function CaseStudies() {
       <section className="whitepapers-section">
         <div className="container">
           <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeUp}>
-            <h2 className="section-title">Laporan <span className="italic">Riset</span></h2>
-            <p className="section-subtitle">Unduh whitepaper teknis dan laporan analisis tren industri terbaru yang dipublikasikan oleh tim riset Vin Robotik.</p>
+            <h2 className="section-title">{journalData.whitepapers.title1} <span className="italic">{journalData.whitepapers.title2}</span></h2>
+            <p className="section-subtitle">{journalData.whitepapers.subtitle}</p>
           </motion.div>
 
           <div className="whitepaper-grid">
-            <motion.div className="whitepaper-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-              <FileText size={40} className="wp-icon" strokeWidth={1} />
-              <h4>Proyeksi Otomasi 2030</h4>
-              <p>Analisis komprehensif mengenai pergeseran tenaga kerja dan integrasi AI dalam dekade mendatang.</p>
-              <button className="btn btn-outline" onClick={() => handleDownloadClick('Proyeksi Otomasi 2030')}><Download size={16} style={{marginRight: '8px'}}/> Unduh PDF</button>
-            </motion.div>
-
-            <motion.div className="whitepaper-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}>
-              <FileText size={40} className="wp-icon" strokeWidth={1} />
-              <h4>Keamanan Cobot ISO/TS 15066</h4>
-              <p>Panduan teknis mendalam tentang regulasi interaksi fisik antara mesin industri dan manusia.</p>
-              <button className="btn btn-outline" onClick={() => handleDownloadClick('Keamanan Cobot ISO/TS 15066')}><Download size={16} style={{marginRight: '8px'}}/> Unduh PDF</button>
-            </motion.div>
-
-            <motion.div className="whitepaper-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.4 }}>
-              <FileText size={40} className="wp-icon" strokeWidth={1} />
-              <h4>Arsitektur Digital Twin</h4>
-              <p>Bagaimana simulasi pabrik virtual (Digital Twin) mampu mereduksi biaya trial-and-error hingga 80%.</p>
-              <button className="btn btn-outline" onClick={() => handleDownloadClick('Arsitektur Digital Twin')}><Download size={16} style={{marginRight: '8px'}}/> Unduh PDF</button>
-            </motion.div>
+            {journalData.whitepapers.list.map((wp, index) => (
+              <motion.div key={index} className="whitepaper-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: index * 0.2 }}>
+                <FileText size={40} className="wp-icon" strokeWidth={1} />
+                <h4>{wp.title}</h4>
+                <p>{wp.desc}</p>
+                <button className="btn btn-outline" onClick={() => handleDownloadClick(wp.title)}><Download size={16} style={{marginRight: '8px'}}/> {journalData.whitepapers.btn}</button>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -206,18 +163,18 @@ export default function CaseStudies() {
         <div className="container">
           <motion.div className="newsletter-content" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
             <Mail size={48} className="newsletter-icon" strokeWidth={1} />
-            <h2 className="font-serif">Wawasan Industri Eksklusif</h2>
-            <p>Berlangganan untuk menerima pembaruan teknologi, studi kasus, dan undangan ke webinar tertutup kami.</p>
+            <h2 className="font-serif">{journalData.newsletter.title}</h2>
+            <p>{journalData.newsletter.desc}</p>
             <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
-              <input type="email" placeholder="Alamat Email Perusahaan" required />
-              <button type="submit" className="btn btn-primary">Berlangganan</button>
+              <input type="email" placeholder={journalData.newsletter.placeholder} required />
+              <button type="submit" className="btn btn-primary">{journalData.newsletter.btn}</button>
             </form>
           </motion.div>
         </div>
       </section>
 
       {/* Lead Generation Modal */}
-      {createPortal(
+      {typeof document !== 'undefined' && createPortal(
         <AnimatePresence>
           {showModal && (
             <motion.div 
@@ -250,22 +207,22 @@ export default function CaseStudies() {
                   >
                     <div className="modal-header">
                       <FileText size={40} className="modal-icon text-primary" strokeWidth={1} />
-                      <h3 className="font-serif">Akses Laporan Eksklusif</h3>
-                      <p>Anda akan mengunduh: <strong>{selectedPaper}</strong></p>
+                      <h3 className="font-serif">{journalData.modal.title}</h3>
+                      <p>{journalData.modal.downloading} <strong>{selectedPaper}</strong></p>
                     </div>
                     
                     <form className="modal-form" onSubmit={handleFormSubmit}>
-                      <p className="modal-instruction">Silakan masukkan email perusahaan Anda. Tautan unduhan PDF akan dikirimkan secara instan.</p>
+                      <p className="modal-instruction">{journalData.modal.instruction}</p>
                       <div className="form-group">
-                        <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" required className="luxury-input" />
+                        <input type="text" name="nama_lengkap" placeholder={journalData.modal.namePlace} required className="luxury-input" />
                       </div>
                       <div className="form-group">
-                        <input type="email" name="email" placeholder="Email Perusahaan" required className="luxury-input" />
+                        <input type="email" name="email" placeholder={journalData.modal.emailPlace} required className="luxury-input" />
                       </div>
                       <button type="submit" className="btn btn-primary w-100" style={{width: '100%', marginTop: '1rem'}} disabled={isSubmitting}>
-                        {isSubmitting ? "MENYIAPKAN DOKUMEN..." : "Unduh Sekarang"}
+                        {isSubmitting ? journalData.modal.btnSending : journalData.modal.btnSubmit}
                       </button>
-                      <span className="privacy-note">Informasi Anda aman bersama kami.</span>
+                      <span className="privacy-note">{journalData.modal.privacy}</span>
                     </form>
                   </motion.div>
                 ) : (
@@ -283,9 +240,9 @@ export default function CaseStudies() {
                     >
                       <CheckCircle size={64} className="text-primary" style={{ marginBottom: '1.5rem' }} />
                     </motion.div>
-                    <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '1rem' }}>Permintaan Diterima</h3>
+                    <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '1rem' }}>{journalData.modal.successTitle}</h3>
                     <p className="text-muted" style={{ fontSize: '1rem', maxWidth: '350px', margin: '0 auto' }}>
-                      Terima kasih! Dokumen teknis <strong>{selectedPaper}</strong> akan segera dikirimkan ke Email Perusahaan Anda setelah proses verifikasi tim kami selesai.
+                      {journalData.modal.successDesc}
                     </p>
                   </motion.div>
                 )}

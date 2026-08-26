@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Users, Zap, Globe, Heart, X, CheckCircle, Upload } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import './Careers.css';
 
 const fadeUp = {
@@ -10,12 +11,9 @@ const fadeUp = {
 };
 
 export default function Careers() {
-  const jobs = [
-    { title: "Senior AI Vision Engineer", location: "Jakarta, ID / Hybrid", type: "Full-Time" },
-    { title: "Robotics Mechatronics Lead", location: "Jakarta, ID", type: "Full-Time" },
-    { title: "B2B Enterprise Account Executive", location: "Singapore, SG", type: "Full-Time" },
-    { title: "Embedded Systems Developer", location: "Remote (APAC)", type: "Contract" },
-  ];
+  const { t } = useLanguage();
+  const careersData = t('careers');
+  const jobs = careersData.jobs.list;
 
   const [selectedJob, setSelectedJob] = useState(null);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -80,10 +78,10 @@ export default function Careers() {
       } else {
         const errorData = await response.json();
         console.error("Notion Error:", errorData);
-        alert(`Gagal: ${errorData.message}`);
+        alert(`${careersData.messages.failApi} ${errorData.message}`);
       }
     } catch (error) {
-      alert("Koneksi gagal. Silakan periksa internet Anda.");
+      alert(careersData.messages.failConn);
     } finally {
       setIsSubmitting(false);
     }
@@ -95,10 +93,10 @@ export default function Careers() {
       <section className="page-hero">
         <div className="container text-center">
           <motion.h1 className="font-serif page-title" initial="hidden" animate="visible" variants={fadeUp}>
-            Bentuk Masa Depan <span className="italic">Otomasi</span>
+            {careersData.hero.title1} <span className="italic">{careersData.hero.title2}</span>
           </motion.h1>
           <motion.p className="page-subtitle" initial="hidden" animate="visible" variants={fadeUp} transition={{ delay: 0.2 }}>
-            Bergabunglah dengan pemikir terbaik di bidang AI dan Mekatronika untuk mendefinisikan ulang batas kemampuan industri.
+            {careersData.hero.subtitle}
           </motion.p>
         </div>
       </section>
@@ -107,30 +105,30 @@ export default function Careers() {
       <section className="culture-section">
         <div className="container">
           <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 className="section-title">Kultur <span className="italic">Vin Robotik</span></h2>
-            <p className="section-subtitle">Kami tidak hanya membangun mesin; kami membangun ekosistem intelektual tempat ide-ide radikal direalisasikan.</p>
+            <h2 className="section-title">{careersData.culture.title1} <span className="italic">{careersData.culture.title2}</span></h2>
+            <p className="section-subtitle">{careersData.culture.subtitle}</p>
           </motion.div>
 
           <div className="culture-grid">
             <motion.div className="culture-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
               <Zap size={32} className="text-primary culture-icon" />
-              <h3 className="font-serif">Kecepatan & Presisi</h3>
-              <p>Kami bergerak layaknya mesin yang kami buat. Cepat dalam bereksperimen, presisi dalam mengeksekusi.</p>
+              <h3 className="font-serif">{careersData.culture.items[0].title}</h3>
+              <p>{careersData.culture.items[0].desc}</p>
             </motion.div>
             <motion.div className="culture-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.1 }}>
               <Users size={32} className="text-primary culture-icon" />
-              <h3 className="font-serif">Kolaborasi Radikal</h3>
-              <p>Tidak ada dinding antara divisi hardware dan software. Semuanya melebur demi menciptakan karya seni mekanis.</p>
+              <h3 className="font-serif">{careersData.culture.items[1].title}</h3>
+              <p>{careersData.culture.items[1].desc}</p>
             </motion.div>
             <motion.div className="culture-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.2 }}>
               <Globe size={32} className="text-primary culture-icon" />
-              <h3 className="font-serif">Dampak Skala Global</h3>
-              <p>Kode yang Anda tulis hari ini akan mengendalikan lini produksi pabrik-pabrik raksasa di berbagai benua esok hari.</p>
+              <h3 className="font-serif">{careersData.culture.items[2].title}</h3>
+              <p>{careersData.culture.items[2].desc}</p>
             </motion.div>
             <motion.div className="culture-card" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} transition={{ delay: 0.3 }}>
               <Heart size={32} className="text-primary culture-icon" />
-              <h3 className="font-serif">Kesejahteraan Holistik</h3>
-              <p>Asuransi premium kelas dunia, kebebasan waktu fleksibel, dan ruang santai untuk me-reset kreativitas Anda.</p>
+              <h3 className="font-serif">{careersData.culture.items[3].title}</h3>
+              <p>{careersData.culture.items[3].desc}</p>
             </motion.div>
           </div>
         </div>
@@ -140,7 +138,7 @@ export default function Careers() {
       <section className="jobs-section" style={{ padding: '8rem 0' }}>
         <div className="container">
           <motion.div className="text-center" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-            <h2 className="section-title">Posisi <span className="italic">Terbuka</span></h2>
+            <h2 className="section-title">{careersData.jobs.title1} <span className="italic">{careersData.jobs.title2}</span></h2>
           </motion.div>
 
           <div className="jobs-list">
@@ -163,14 +161,14 @@ export default function Careers() {
                   </div>
                 </div>
                 <button className="btn btn-outline job-btn" onClick={() => handleApply(job)}>
-                  Klik Untuk Melamar <ArrowRight size={16} style={{marginLeft: '8px'}} />
+                  {careersData.jobs.applyBtn} <ArrowRight size={16} style={{marginLeft: '8px'}} />
                 </button>
               </motion.div>
             ))}
           </div>
           
           <div className="text-center" style={{ marginTop: '4rem' }}>
-            <p className="text-muted">Tidak menemukan posisi yang cocok? Kirimkan CV Anda ke <strong>careers@vinrobotik.com</strong></p>
+            <p className="text-muted">{careersData.jobs.notMatch} <strong>careers@vinrobotik.com</strong></p>
           </div>
         </div>
       </section>
@@ -197,39 +195,39 @@ export default function Careers() {
 
               {!isSubmitted ? (
                 <>
-                  <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Kirim Lamaran</h3>
+                  <h3 className="font-serif" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{careersData.modal.title}</h3>
                   <p className="text-muted" style={{ marginBottom: '2rem' }}>
-                    Posisi: <strong>{selectedJob.title}</strong>
+                    {careersData.modal.position} <strong>{selectedJob.title}</strong>
                   </p>
                   
                   <form onSubmit={handleSubmit} className="application-form">
                     <input type="hidden" name="posisi" value={selectedJob.title} />
                     
                     <div className="form-group">
-                      <label>Nama Lengkap</label>
-                      <input type="text" name="nama_lengkap" className="app-input" required placeholder="Cth: John Doe" />
+                      <label>{careersData.modal.name}</label>
+                      <input type="text" name="nama_lengkap" className="app-input" required placeholder={careersData.modal.namePlace} />
                     </div>
                     
                     <div className="form-group">
-                      <label>Alamat Email</label>
-                      <input type="email" name="email" className="app-input" required placeholder="john@example.com" />
+                      <label>{careersData.modal.email}</label>
+                      <input type="email" name="email" className="app-input" required placeholder={careersData.modal.emailPlace} />
                     </div>
                     
                     <div className="form-group">
-                      <label>URL LinkedIn / Portofolio</label>
-                      <input type="url" name="portofolio_url" className="app-input" placeholder="https://linkedin.com/in/..." />
+                      <label>{careersData.modal.portofolio}</label>
+                      <input type="url" name="portofolio_url" className="app-input" placeholder={careersData.modal.portofolioPlace} />
                     </div>
                     
                     <div className="form-group">
-                      <label>Link Google Drive CV / Resume</label>
-                      <input type="url" name="cv_resume_link" className="app-input" required placeholder="https://drive.google.com/file/d/..." />
+                      <label>{careersData.modal.cv}</label>
+                      <input type="url" name="cv_resume_link" className="app-input" required placeholder={careersData.modal.cvPlace} />
                       <small className="text-muted" style={{display: 'block', marginTop: '0.5rem', fontSize: '0.8rem'}}>
-                        *Pastikan akses link Google Drive Anda sudah diatur ke "Anyone with the link" (Siapa saja yang memiliki tautan).
+                        {careersData.modal.cvNote}
                       </small>
                     </div>
 
                     <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }} disabled={isSubmitting}>
-                      {isSubmitting ? "Mengirim..." : "Kirim Lamaran Sekarang"}
+                      {isSubmitting ? careersData.modal.btnSending : careersData.modal.btnSubmit}
                     </button>
                   </form>
                 </>
@@ -242,9 +240,9 @@ export default function Careers() {
                   >
                     <CheckCircle size={64} className="text-primary" style={{ margin: '0 auto 1.5rem auto' }} />
                   </motion.div>
-                  <h3 className="font-serif">Lamaran Berhasil Dikirim!</h3>
+                  <h3 className="font-serif">{careersData.modal.successTitle}</h3>
                   <p className="text-muted" style={{ marginTop: '1rem' }}>
-                    Terima kasih atas ketertarikan Anda. Tim rekrutmen kami akan meninjau profil Anda dan segera menghubungi Anda kembali.
+                    {careersData.modal.successDesc}
                   </p>
                 </div>
               )}
