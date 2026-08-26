@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Moon, Sun, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -66,13 +66,13 @@ export default function Navbar() {
           <MotionLink whileTap={{ scale: 0.9 }} to="/careers" className={`nav-link ${location.pathname === '/careers' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.careers')}</MotionLink>
           <MotionLink whileTap={{ scale: 0.95 }} to="/contact" className="btn btn-primary nav-btn" onClick={closeMenu}>{t('nav.book')}</MotionLink>
           
-          <div className="nav-controls" style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: '1rem' }}>
-            <button className="lang-toggle" onClick={toggleLanguage} aria-label="Toggle Language" style={{ background: 'none', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '0.4rem 0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-color)', fontSize: '0.85rem', fontWeight: '500' }}>
-              <Globe size={16} />
+          <div className="nav-controls" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: '0.5rem' }}>
+            <button className="lang-toggle" onClick={toggleLanguage} aria-label="Toggle Language" style={{ background: 'none', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '0.4rem 0.6rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: '500' }}>
+              <Globe size={14} />
               {language.toUpperCase()}
             </button>
             <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Dark Mode" style={{ marginLeft: 0 }}>
-              {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
             </button>
           </div>
         </div>
