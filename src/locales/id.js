@@ -713,3 +713,5 @@ id.notFound = {
 id.wa = {
   tooltip: "Chat Sekarang"
 };
+
+id.footer.status = "Semua Sistem Beroperasi";

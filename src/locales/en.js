@@ -713,3 +713,5 @@ en.notFound = {
 en.wa = {
   tooltip: "Chat Now"
 };
+
+en.footer.status = "All Systems Operational";
