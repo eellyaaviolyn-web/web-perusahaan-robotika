@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, FileText, Download, Mail, X, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { supabase } from '../supabaseClient';
 import './CaseStudies.css';
 
 const fadeUp = {
@@ -28,8 +29,6 @@ export default function CaseStudies() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     
-    // In original code, the logic was bound to the exact string 'Proyeksi Otomasi 2030'.
-    // We check against both ID and EN titles for the first report.
     if (selectedPaper !== journalData.whitepapers.list[0].title) {
       alert(journalData.modal.alertUpdates);
       setShowModal(false);
@@ -41,46 +40,30 @@ export default function CaseStudies() {
     const formData = new FormData(e.target);
     const namaLengkap = formData.get("nama_lengkap");
     const emailPerusahaan = formData.get("email");
-
-    const notionPayload = {
-      parent: { database_id: "3bfcd578414980318422d426c0fab3d4" },
-      properties: {
-        "Nama Lengkap": {
-          title: [{ text: { content: namaLengkap } }]
-        },
-        "Email": {
-          email: emailPerusahaan
-        },
-        "Dokumen": {
-          rich_text: [{ text: { content: selectedPaper } }]
-        }
-      }
-    };
     
     try {
-      const response = await fetch("/api/notion/v1/pages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(notionPayload)
-      });
+      const { data, error } = await supabase
+        .from('pdf_downloads')
+        .insert([
+          { 
+            nama_lengkap: namaLengkap,
+            email: emailPerusahaan,
+            dokumen: selectedPaper
+          }
+        ]);
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        
-        setTimeout(() => {
-          setShowModal(false);
-          // reset state after modal finishes animating out
-          setTimeout(() => setIsSubmitted(false), 500);
-        }, 4000);
-      } else {
-        const errorData = await response.json();
-        console.error("Notion Error:", errorData);
-        alert(`Gagal menyimpan data: ${errorData.message}`);
-      }
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      
+      setTimeout(() => {
+        setShowModal(false);
+        setTimeout(() => setIsSubmitted(false), 500);
+      }, 4000);
+      
     } catch (error) {
-      alert("Koneksi gagal. Silakan periksa internet Anda.");
+      console.error("Supabase Error:", error);
+      alert(`Gagal menyimpan data: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }

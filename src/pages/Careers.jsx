@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Users, Zap, Globe, Heart, X, CheckCircle, Upload } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { supabase } from '../supabaseClient';
 import './Careers.css';
 
 const fadeUp = {
@@ -38,50 +39,30 @@ export default function Careers() {
     
     setIsSubmitting(true);
     
-    const notionPayload = {
-      parent: { database_id: "3becd5784149806e9a5ee76f1d5f2beb" },
-      properties: {
-        "Nama Lengkap": {
-          title: [{ text: { content: namaLengkap } }]
-        },
-        "Email": {
-          email: email
-        },
-        "Posisi": {
-          rich_text: [{ text: { content: posisi } }]
-        },
-        "Link CV": {
-          url: cvResumeLink
-        }
-      }
-    };
-
-    if (portofolioUrl) {
-      notionPayload.properties["Portofolio"] = { url: portofolioUrl };
-    }
-    
     try {
-      const response = await fetch("/api/notion/v1/pages", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(notionPayload)
-      });
+      const { data, error } = await supabase
+        .from('job_applications')
+        .insert([
+          { 
+            posisi: posisi,
+            nama_lengkap: namaLengkap,
+            email: email,
+            portofolio_url: portofolioUrl,
+            cv_url: cvResumeLink
+          }
+        ]);
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setTimeout(() => {
-          setSelectedJob(null);
-          setIsSubmitted(false);
-        }, 3000);
-      } else {
-        const errorData = await response.json();
-        console.error("Notion Error:", errorData);
-        alert(`${careersData.messages.failApi} ${errorData.message}`);
-      }
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setSelectedJob(null);
+        setIsSubmitted(false);
+      }, 3000);
+      
     } catch (error) {
-      alert(careersData.messages.failConn);
+      console.error("Supabase Error:", error);
+      alert(`${careersData.messages.failApi} ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }

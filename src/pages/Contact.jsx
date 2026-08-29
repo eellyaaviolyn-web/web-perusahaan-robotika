@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowRight, CheckCircle } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
+import { supabase } from '../supabaseClient';
 import './Contact.css';
 
 const fadeUp = {
@@ -21,7 +22,6 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
-    // Also update industry state when language changes so it matches the select options
     setIndustry(contactData.form.ind1);
   }, [language]);
 
@@ -51,48 +51,28 @@ export default function Contact() {
     const jabatan = formData.get("jabatan");
     const emailBisnis = formData.get("email_bisnis");
     
-    const notionPayload = {
-      parent: { database_id: "3becd578414980c78adbe286226c07bc" },
-      properties: {
-        "Nama Lengkap": {
-          title: [{ text: { content: namaLengkap } }]
-        },
-        "Email Bisnis": {
-          email: emailBisnis
-        },
-        "Jabatan": {
-          rich_text: [{ text: { content: jabatan } }]
-        },
-        "Sektor Industri": {
-          multi_select: [{ name: industry }]
-        },
-        "Detail Kebutuhan": {
-          rich_text: [{ text: { content: details } }]
-        }
-      }
-    };
-    
     try {
-      const response = await fetch("/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(notionPayload)
-      });
+      const { data, error } = await supabase
+        .from('contacts')
+        .insert([
+          { 
+            nama_lengkap: namaLengkap,
+            email: emailBisnis,
+            nama_perusahaan: industry,
+            pesan: `Jabatan: ${jabatan}\n\nDetail:\n${details}`
+          }
+        ]);
 
-      if (response.ok) {
-        setIsSubmitted(true);
-        setDetails('');
-        e.target.reset();
-        setTimeout(() => setIsSubmitted(false), 5000);
-      } else {
-        const errorData = await response.json();
-        console.error("Notion Error:", errorData);
-        alert(`${contactData.messages.failApi} ${errorData.message}`);
-      }
+      if (error) throw error;
+
+      setIsSubmitted(true);
+      setDetails('');
+      e.target.reset();
+      setTimeout(() => setIsSubmitted(false), 5000);
+      
     } catch (error) {
-      alert(contactData.messages.failConn);
+      console.error("Supabase Error:", error);
+      alert(`${contactData.messages.failApi} ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
