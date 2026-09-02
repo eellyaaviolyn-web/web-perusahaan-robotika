@@ -1,7 +1,7 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Users, Zap, Globe, Heart, X, CheckCircle, Upload } from 'lucide-react';
+import { ArrowRight, Users, Zap, Globe, Heart, X, CheckCircle, Upload, Loader2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { supabase } from '../supabaseClient';
 import './Careers.css';
@@ -208,7 +208,11 @@ export default function Careers() {
                     </div>
 
                     <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }} disabled={isSubmitting}>
-                      {isSubmitting ? careersData.modal.btnSending : careersData.modal.btnSubmit}
+                      {isSubmitting ? (
+                        <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
+                          <Loader2 size={16} className="spin" /> {careersData.modal.btnSending}
+                        </span>
+                      ) : careersData.modal.btnSubmit}
                     </button>
                   </form>
                 </>

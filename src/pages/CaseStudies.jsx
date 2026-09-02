@@ -1,7 +1,7 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, FileText, Download, Mail, X, CheckCircle } from 'lucide-react';
+import { ArrowRight, FileText, Download, Mail, X, CheckCircle, Loader2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { supabase } from '../supabaseClient';
@@ -203,7 +203,11 @@ export default function CaseStudies() {
                         <input type="email" name="email" placeholder={journalData.modal.emailPlace} required className="luxury-input" />
                       </div>
                       <button type="submit" className="btn btn-primary w-100" style={{width: '100%', marginTop: '1rem'}} disabled={isSubmitting}>
-                        {isSubmitting ? journalData.modal.btnSending : journalData.modal.btnSubmit}
+                        {isSubmitting ? (
+                          <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px'}}>
+                            <Loader2 size={16} className="spin" /> {journalData.modal.btnSending}
+                          </span>
+                        ) : journalData.modal.btnSubmit}
                       </button>
                       <span className="privacy-note">{journalData.modal.privacy}</span>
                     </form>

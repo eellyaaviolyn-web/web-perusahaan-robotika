@@ -17,6 +17,8 @@ import Contact from './pages/Contact';
 import Careers from './pages/Careers';
 import Simulator from './pages/Simulator';
 import NotFound from './pages/NotFound';
+import LegalPage from './pages/LegalPage';
+import { Analytics } from "@vercel/analytics/react"
 
 const PageWrapper = ({ children }) => (
   <>
@@ -67,6 +69,8 @@ function App() {
             <Route path="/simulator" element={<PageWrapper><Simulator /></PageWrapper>} />
             <Route path="/faq" element={<PageWrapper><FAQ /></PageWrapper>} />
             <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
+            <Route path="/privacy" element={<PageWrapper><LegalPage type="privacy" /></PageWrapper>} />
+            <Route path="/terms" element={<PageWrapper><LegalPage type="terms" /></PageWrapper>} />
             <Route path="*" element={<PageWrapper><NotFound /></PageWrapper>} />
           </Routes>
         </AnimatePresence>
@@ -74,6 +78,7 @@ function App() {
       <Footer />
       <WhatsAppButton />
       <ScrollToTop />
+      <Analytics />
     </>
   );
 }

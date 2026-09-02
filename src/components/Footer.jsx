@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import './Footer.css';
 
@@ -31,11 +31,20 @@ export default function Footer() {
           <div className="footer-links">
             <h3>{t('footer.legalTitle')}</h3>
             <ul>
-              <li><Link to="#">{t('footer.privacy')}</Link></li>
-              <li><Link to="#">{t('footer.terms')}</Link></li>
+              <li><Link to="/privacy">{t('footer.privacy')}</Link></li>
+              <li><Link to="/terms">{t('footer.terms')}</Link></li>
               <li><Link to="#">{t('footer.iso')}</Link></li>
               <li><Link to="#">{t('footer.sitemap')}</Link></li>
             </ul>
+            
+            <div className="trust-badges" style={{marginTop: '2rem', display: 'flex', gap: '0.5rem'}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: '5px', padding: '5px 10px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', fontSize: '0.7rem', border: '1px solid rgba(255,255,255,0.1)'}}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> ISO 9001
+              </div>
+              <div style={{display: 'flex', alignItems: 'center', gap: '5px', padding: '5px 10px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', fontSize: '0.7rem', border: '1px solid rgba(255,255,255,0.1)'}}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00ff88" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> CE Certified
+              </div>
+            </div>
           </div>
 
           <div className="footer-contact">

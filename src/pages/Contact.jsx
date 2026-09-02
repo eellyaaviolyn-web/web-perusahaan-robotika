@@ -1,6 +1,6 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowRight, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, CheckCircle, Loader2 } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { supabase } from '../supabaseClient';
@@ -182,7 +182,11 @@ export default function Contact() {
                     </div>
 
                     <button type="submit" className="btn btn-primary submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? contactData.form.btnSending : (location.state?.fromPdf ? contactData.form.btnPdf : contactData.form.btnSubmit)} <ArrowRight size={16} style={{marginLeft: '8px'}} />
+                      {isSubmitting ? (
+                        <><Loader2 size={16} className="spin" style={{marginRight: '8px'}} /> {contactData.form.btnSending}</>
+                      ) : (
+                        <>{location.state?.fromPdf ? contactData.form.btnPdf : contactData.form.btnSubmit} <ArrowRight size={16} style={{marginLeft: '8px'}} /></>
+                      )}
                     </button>
                   </motion.form>
                 ) : (
