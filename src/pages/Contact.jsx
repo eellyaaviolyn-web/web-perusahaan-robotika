@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, ArrowRight, CheckCircle, Loader2 } from 'lucide-re
 import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { supabase } from '../supabaseClient';
+import toast from 'react-hot-toast';
 import './Contact.css';
 
 const fadeUp = {
@@ -65,6 +66,7 @@ export default function Contact() {
 
       if (error) throw error;
 
+      toast.success(contactData.messages.successGeneral, { duration: 4000, icon: '✅' });
       setIsSubmitted(true);
       setDetails('');
       e.target.reset();
@@ -72,7 +74,7 @@ export default function Contact() {
       
     } catch (error) {
       console.error("Supabase Error:", error);
-      alert(`${contactData.messages.failApi} ${error.message}`);
+      toast.error(`${contactData.messages.failApi} ${error.message}`, { duration: 5000 });
     } finally {
       setIsSubmitting(false);
     }

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Users, Zap, Globe, Heart, X, CheckCircle, Upload, Loader2 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { supabase } from '../supabaseClient';
+import toast from 'react-hot-toast';
 import './Careers.css';
 
 const fadeUp = {
@@ -54,6 +55,7 @@ export default function Careers() {
 
       if (error) throw error;
 
+      toast.success(careersData.modal.successTitle, { duration: 4000, icon: '🎉' });
       setIsSubmitted(true);
       setTimeout(() => {
         setSelectedJob(null);
@@ -62,7 +64,7 @@ export default function Careers() {
       
     } catch (error) {
       console.error("Supabase Error:", error);
-      alert(`${careersData.messages.failApi} ${error.message}`);
+      toast.error(`${careersData.messages.failApi} ${error.message}`, { duration: 5000 });
     } finally {
       setIsSubmitting(false);
     }

@@ -101,3 +101,67 @@
   color: var(--primary);
   border-bottom-color: var(--primary);
 }
+
+/* ── Filter Bar ── */
+.products-filter-bar {
+  padding: 0 0 1rem 0;
+}
+
+.filter-tab {
+  padding: 0.5rem 1.2rem;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font-sans, Inter, sans-serif);
+}
+
+.filter-tab:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.filter-tab.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #0a0a0a;
+  font-weight: 600;
+}
+
+.product-search-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.product-search-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.product-search-input {
+  padding: 0.6rem 1rem 0.6rem 2.5rem;
+  border-radius: 30px;
+  border: 1px solid var(--border-color);
+  background: var(--glass-bg, rgba(255,255,255,0.05));
+  color: var(--text-color);
+  font-size: 0.9rem;
+  width: 240px;
+  outline: none;
+  transition: border-color 0.25s;
+}
+
+.product-search-input:focus {
+  border-color: var(--primary);
+}
+
+.product-image {
+  position: relative;
+  overflow: visible;
+}

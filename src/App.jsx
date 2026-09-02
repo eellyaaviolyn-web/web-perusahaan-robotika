@@ -18,6 +18,8 @@ import Careers from './pages/Careers';
 import Simulator from './pages/Simulator';
 import NotFound from './pages/NotFound';
 import LegalPage from './pages/LegalPage';
+import CookieBanner from './components/CookieBanner';
+import { Toaster } from 'react-hot-toast'
 import { Analytics } from "@vercel/analytics/react"
 
 const PageWrapper = ({ children }) => (
@@ -79,6 +81,8 @@ function App() {
       <WhatsAppButton />
       <ScrollToTop />
       <Analytics />
+      <CookieBanner />
+      <Toaster position="top-right" toastOptions={{ style: { background: '#1a1a1a', color: '#f5f5f5', border: '1px solid rgba(200,170,110,0.3)', borderRadius: '12px', fontFamily: 'Inter, sans-serif' } }} />
     </>
   );
 }
