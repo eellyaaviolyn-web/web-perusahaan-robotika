@@ -1,79 +1,69 @@
 ﻿import { useState, useEffect } from 'react';
 import { supabase } from '../../supabaseClient';
-import { Loader2, FileDown, Mail, Clock } from 'lucide-react';
+import { Loader2, FileDown, Mail, Clock, Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
+import './Admin.css';
 
 export default function DownloadsAdmin() {
   const [downloads, setDownloads] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
-  useEffect(() => {
-    fetchDownloads();
-  }, []);
+  useEffect(() => { fetchDownloads(); }, []);
 
   async function fetchDownloads() {
     try {
-      const { data, error } = await supabase
-        .from('pdf_downloads')
-        .select('*')
-        .order('created_at', { ascending: false });
-
+      const { data, error } = await supabase.from('pdf_downloads').select('*').order('created_at', { ascending: false });
       if (error) throw error;
       setDownloads(data || []);
     } catch (error) {
-      toast.error('Gagal mengambil data unduhan: ' + error.message);
+      toast.error('Gagal mengambil data unduhan');
     } finally {
       setLoading(false);
     }
   }
 
-  const formatDate = (dateString) => {
-    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    return new Date(dateString).toLocaleDateString('id-ID', options);
-  };
+  const formatDate = (d) => new Date(d).toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+  const filtered = downloads.filter(d =>
+    !search || d.nama_lengkap?.toLowerCase().includes(search.toLowerCase()) ||
+    d.email?.toLowerCase().includes(search.toLowerCase()) ||
+    d.dokumen?.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
-    <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '2rem' }}>
+    <div className="admin-page">
+      <div className="admin-page-header">
         <div>
-          <h1 className="font-serif" style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Data Unduhan PDF</h1>
-          <p style={{ color: 'var(--text-muted)' }}>Prospek (Leads) dari halaman Jurnal / Studi Kasus</p>
+          <h1 className="admin-page-title">Unduhan PDF</h1>
+          <p className="admin-page-sub">Leads dari fitur unduhan katalog & jurnal</p>
         </div>
-        <div style={{ background: 'rgba(245, 158, 11, 0.1)', color: '#f59e0b', padding: '0.5rem 1rem', borderRadius: '8px', fontSize: '0.9rem' }}>
-          Total: <strong>{downloads.length}</strong> unduhan
-        </div>
+        <span className="admin-count-badge" style={{ background: 'rgba(245,158,11,0.1)', color: '#f59e0b', border: '1px solid rgba(245,158,11,0.25)' }}>
+          {downloads.length} Unduhan
+        </span>
+      </div>
+
+      <div style={{ position: 'relative', maxWidth: '400px' }}>
+        <Search size={16} style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', color: '#555' }} />
+        <input type="text" placeholder="Cari nama, email, dokumen..." value={search} onChange={(e) => setSearch(e.target.value)} className="admin-input" style={{ paddingLeft: '2.8rem', width: '100%', boxSizing: 'border-box' }} />
       </div>
 
       {loading ? (
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 0', color: 'var(--text-muted)' }}><Loader2 className="spin" size={32} style={{ marginRight: '1rem' }} /> Memuat data...</div>
-      ) : downloads.length === 0 ? (
-        <div style={{ background: 'rgba(255,255,255,0.02)', padding: '4rem', textAlign: 'center', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
-          <FileDown size={48} style={{ color: 'var(--text-muted)', margin: '0 auto 1rem', opacity: 0.5 }} />
-          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Belum ada unduhan</h3>
+        <div className="admin-empty-state"><Loader2 className="spin" size={36} color="#c8aa6e" /><span>Memuat data...</span></div>
+      ) : filtered.length === 0 ? (
+        <div className="admin-empty-state">
+          <FileDown size={48} style={{ opacity: 0.3 }} />
+          <p>{search ? 'Tidak ada unduhan yang cocok' : 'Belum ada data unduhan'}</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          {downloads.map((dl, idx) => (
-            <motion.div 
-              key={dl.id || idx}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: idx * 0.05 }}
-              style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '12px', padding: '1.5rem', display: 'flex', flexDirection: 'column' }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#f59e0b', marginBottom: '1rem', fontSize: '0.85rem', fontWeight: '500' }}>
-                <FileDown size={16} /> {dl.dokumen}
-              </div>
-              
-              <h3 className="font-serif" style={{ fontSize: '1.2rem', marginBottom: '0.3rem', color: '#fff' }}>{dl.nama_lengkap}</h3>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1.5rem' }}>
-                <Mail size={14} /> {dl.email}
-              </div>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#777', fontSize: '0.8rem', marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                <Clock size={12} /> Diunduh pada: {formatDate(dl.created_at)}
-              </div>
+        <div className="admin-dl-grid">
+          {filtered.map((dl, idx) => (
+            <motion.div key={dl.id || idx} initial={{ opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: idx * 0.06 }} className="admin-dl-card">
+              <div className="admin-dl-badge"><FileDown size={13} />{dl.dokumen}</div>
+              <div className="admin-dl-name">{dl.nama_lengkap}</div>
+              <div className="admin-dl-email"><Mail size={13} />{dl.email}</div>
+              <div className="admin-dl-date"><Clock size={12} />Diunduh: {formatDate(dl.created_at)}</div>
             </motion.div>
           ))}
         </div>
