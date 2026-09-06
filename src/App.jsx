@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+﻿import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -18,6 +18,12 @@ import Careers from './pages/Careers';
 import Simulator from './pages/Simulator';
 import NotFound from './pages/NotFound';
 import LegalPage from './pages/LegalPage';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminLayout from './pages/admin/AdminLayout';
+import Dashboard from './pages/admin/Dashboard';
+import Inbox from './pages/admin/Inbox';
+import CareersAdmin from './pages/admin/CareersAdmin';
+import DownloadsAdmin from './pages/admin/DownloadsAdmin';
 import CookieBanner from './components/CookieBanner';
 import { Toaster } from 'react-hot-toast'
 import { Analytics } from "@vercel/analytics/react"
@@ -29,16 +35,7 @@ const PageWrapper = ({ children }) => (
       animate={{ scaleY: 0 }}
       exit={{ scaleY: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: 'var(--secondary)',
-        zIndex: 99999,
-        transformOrigin: 'bottom'
-      }}
+      style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', backgroundColor: 'var(--secondary)', zIndex: 99999, transformOrigin: 'bottom' }}
     />
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -53,7 +50,26 @@ const PageWrapper = ({ children }) => (
 
 function App() {
   const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
   
+  if (isAdmin) {
+    return (
+      <>
+        <Routes>
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="inbox" element={<Inbox />} />
+            <Route path="careers" element={<CareersAdmin />} />
+            <Route path="downloads" element={<DownloadsAdmin />} />
+          </Route>
+        </Routes>
+        <Toaster position="top-right" toastOptions={{ style: { background: '#1a1a1a', color: '#f5f5f5', border: '1px solid rgba(200,170,110,0.3)', borderRadius: '12px', fontFamily: 'Inter, sans-serif' } }} />
+      </>
+    );
+  }
+
   return (
     <>
       <Navbar />
