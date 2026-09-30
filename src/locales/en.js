@@ -1,4 +1,4 @@
-﻿export const en = {
+export const en = {
   nav: {
     home: "Home",
     about: "Our Story",
@@ -133,35 +133,35 @@ en.products = {
   },
   items: [
     {
-      category: "HEAVY MANUFACTURING SERIES",
-      name: "Titanium Arm Series (T-900)",
-      desc: "Designed to withstand extreme loads in harsh factory environments. The solid titanium joint system provides torque speed without the slightest vibration.",
+      category: "COLLABORATIVE ROBOT SERIES",
+      name: "VIN-H1 Cobot Series",
+      desc: "A dual-arm humanoid collaborative robot designed to work alongside human operators. Equipped with dual stereo cameras on the head and real-time object recognition for high-precision tasks on the assembly line.",
       specs: [
-        { label: "Payload", value: "800 Kg" },
-        { label: "Reach", value: "3.5 Meters" },
-        { label: "Repeatability", value: "±0.02 mm" }
+        { label: "Degrees of Freedom", value: "14 DOF" },
+        { label: "Payload per Arm", value: "10 Kg" },
+        { label: "Vision System", value: "Dual Stereo Camera" }
       ],
       link: "View Details"
     },
     {
-      category: "COLLABORATIVE ROBOTICS (COBOT)",
-      name: "V-Cobot Harmony (C-20)",
-      desc: "Perfection working side-by-side. Equipped with a capacitive sensor skin that detects the slightest touch, ensuring absolute safety for human operators nearby.",
+      category: "MANUFACTURING HUMANOID SERIES",
+      name: "VIN-A1 Assembly Humanoid",
+      desc: "High-precision humanoid robot for automotive and heavy manufacturing assembly lines. Its anthropomorphic design allows it to use the same tools as human workers, minimizing facility reconfiguration.",
       specs: [
-        { label: "Payload", value: "20 Kg" },
-        { label: "Reach", value: "1.3 Meters" },
+        { label: "Payload", value: "25 Kg" },
+        { label: "Repeatability", value: "±0.05 mm" },
         { label: "Safety Protocol", value: "ISO/TS 15066" }
       ],
       link: "View Details"
     },
     {
-      category: "AUTONOMOUS LOGISTICS SYSTEM",
-      name: "Aero AMR Fleet (A-X)",
-      desc: "The logistics architecture of the future. A fleet of intelligent autonomous vehicles capable of mapping warehouse dynamics in real-time using LIDAR and hybrid navigation, eliminating logistics bottlenecks.",
+      category: "HUMANOID LOGISTICS ROBOT SERIES",
+      name: "VIN-L1 Logistic Humanoid",
+      desc: "Autonomous bipedal humanoid robot for navigating warehouses and complex industrial facilities. Its compact design with yellow accents enables easy identification in active work areas, powered by SLAM and depth vision for rail-free adaptive navigation.",
       specs: [
-        { label: "Max Payload", value: "1,500 Kg" },
-        { label: "Battery Life", value: "14 Hours (Fast Charge)" },
-        { label: "Navigation", value: "SLAM & Visual Odometry" }
+        { label: "Walking Speed", value: "1.5 m/s" },
+        { label: "Battery Life", value: "8 Hours Operation" },
+        { label: "Navigation", value: "SLAM + Depth Vision" }
       ],
       link: "View Details"
     }

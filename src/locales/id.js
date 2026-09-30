@@ -1,4 +1,4 @@
-﻿export const id = {
+export const id = {
   nav: {
     home: "Beranda",
     about: "Tentang Kami",
@@ -133,35 +133,35 @@ id.products = {
   },
   items: [
     {
-      category: "SERI MANUFAKTUR BERAT",
-      name: "Titanium Arm Series (T-900)",
-      desc: "Dirancang untuk menahan beban ekstrem di lingkungan pabrik yang keras. Sistem sendi berbahan titanium padat memberikan kecepatan torsi tanpa getaran sedikit pun.",
+      category: "SERI ROBOT KOLABORATIF",
+      name: "VIN-H1 Cobot Series",
+      desc: "Robot humanoid kolaboratif dua lengan yang dirancang bekerja berdampingan dengan operator manusia. Dilengkapi sensor visual ganda di kepala dan sistem pengenalan objek real-time untuk presisi tinggi di lini perakitan.",
       specs: [
-        { label: "Payload", value: "800 Kg" },
-        { label: "Reach", value: "3.5 Meter" },
-        { label: "Repeatability", value: "±0.02 mm" }
+        { label: "Degrees of Freedom", value: "14 DOF" },
+        { label: "Payload per Arm", value: "10 Kg" },
+        { label: "Vision System", value: "Dual Stereo Camera" }
       ],
       link: "Lihat Detail"
     },
     {
-      category: "ROBOTIK KOLABORATIF (COBOT)",
-      name: "V-Cobot Harmony (C-20)",
-      desc: "Kesempurnaan bekerja berdampingan. Dilengkapi dengan balutan kulit sensor kapasitif yang mendeteksi sentuhan sekecil apa pun, memastikan keamanan mutlak bagi operator manusia di sekitarnya.",
+      category: "SERI HUMANOID MANUFAKTUR",
+      name: "VIN-A1 Assembly Humanoid",
+      desc: "Robot humanoid presisi tinggi untuk lini perakitan otomotif dan manufaktur. Desain antropomorfik memungkinkannya menggunakan alat yang sama dengan tenaga manusia, meminimalkan rekonfigurasi fasilitas yang sudah ada.",
       specs: [
-        { label: "Payload", value: "20 Kg" },
-        { label: "Reach", value: "1.3 Meter" },
+        { label: "Payload", value: "25 Kg" },
+        { label: "Repeatability", value: "±0.05 mm" },
         { label: "Safety Protocol", value: "ISO/TS 15066" }
       ],
       link: "Lihat Detail"
     },
     {
-      category: "SISTEM LOGISTIK OTONOM",
-      name: "Aero AMR Fleet (A-X)",
-      desc: "Arsitektur logistik masa depan. Armada mobil otonom cerdas yang mampu memetakan dinamika gudang secara real-time menggunakan LIDAR dan sistem navigasi hibrida, mengeliminasi kemacetan logistik.",
+      category: "SERI ROBOT LOGISTIK HUMANOID",
+      name: "VIN-L1 Logistic Humanoid",
+      desc: "Robot humanoid bipedal otonom untuk navigasi di gudang dan fasilitas industri. Desain kompak dengan aksen kuning memudahkan identifikasi di area kerja aktif, dilengkapi sistem SLAM dan depth vision untuk navigasi adaptif tanpa rel.",
       specs: [
-        { label: "Max Payload", value: "1,500 Kg" },
-        { label: "Battery Life", value: "14 Jam (Fast Charge)" },
-        { label: "Navigation", value: "SLAM & Visual Odometry" }
+        { label: "Walking Speed", value: "1.5 m/s" },
+        { label: "Battery Life", value: "8 Jam Operasi" },
+        { label: "Navigation", value: "SLAM + Depth Vision" }
       ],
       link: "Lihat Detail"
     }
