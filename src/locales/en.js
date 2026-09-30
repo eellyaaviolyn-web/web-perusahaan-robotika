@@ -122,6 +122,23 @@ en.about = {
   cta: {
     title: "Join the Future",
     btn: "View Our System Collection"
+  },
+  visiMisi: {
+    sectionTitle1: "Vision",
+    sectionTitle2: "& Mission",
+    sectionSubtitle: "The foundational values guiding every decision and innovation we create.",
+    visiLabel: "VISION",
+    visiTitle: "To Become the Global Leader in Humanoid Robotics, Elevating Asia's Industrial Stature",
+    visiDesc: "We envision making Asia the global epicenter of the humanoid robotics revolution by 2035. By placing enterprise-grade technology in the hands of local manufacturers, we believe every factory deserves to operate with world-class precision and efficiency.",
+    misiLabel: "MISSION",
+    misiTitle: "Our Commitment to Industry",
+    misiItems: [
+      "Develop humanoid robots that collaborate safely and efficiently alongside human workers in real industrial environments.",
+      "Transfer robotics technology knowledge to local specialists through internationally certified training programs.",
+      "Build a sustainable manufacturing ecosystem with automation solutions that are environmentally friendly and energy-efficient.",
+      "Deliver world-class after-sales service with incident response times under 15 minutes to minimize downtime.",
+      "Continuously innovate through a minimum R&D investment of 30% of annual revenue to maintain technological superiority."
+    ]
   }
 };
 

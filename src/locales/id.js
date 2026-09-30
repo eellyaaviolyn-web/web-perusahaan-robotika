@@ -122,6 +122,23 @@ id.about = {
   cta: {
     title: "Bergabunglah dengan Masa Depan",
     btn: "Lihat Koleksi Sistem Kami"
+  },
+  visiMisi: {
+    sectionTitle1: "Visi",
+    sectionTitle2: "& Misi",
+    sectionSubtitle: "Landasan nilai yang memandu setiap keputusan dan inovasi yang kami ciptakan.",
+    visiLabel: "VISI",
+    visiTitle: "Menjadi Pemimpin Global Robotika Humanoid yang Mengangkat Harkat Industri Asia",
+    visiDesc: "Kami bervisi menjadikan Asia sebagai episentrum revolusi robotika humanoid dunia pada tahun 2035. Dengan menempatkan teknologi kelas enterprise di tangan industri manufaktur lokal, kami percaya setiap pabrik berhak beroperasi dengan presisi dan efisiensi standar global.",
+    misiLabel: "MISI",
+    misiTitle: "Komitmen Kami kepada Industri",
+    misiItems: [
+      "Mengembangkan robot humanoid yang bekerja berdampingan dengan manusia secara aman dan efisien di lingkungan industri nyata.",
+      "Mentransfer pengetahuan teknologi robotika kepada tenaga ahli lokal melalui program sertifikasi internasional.",
+      "Membangun ekosistem manufaktur berkelanjutan dengan solusi otomasi yang ramah lingkungan dan hemat energi.",
+      "Menghadirkan layanan purna jual kelas dunia dengan waktu respons insiden di bawah 15 menit untuk meminimalkan downtime.",
+      "Terus berinovasi melalui investasi R&D minimum 30% dari pendapatan tahunan untuk mempertahankan keunggulan teknologi."
+    ]
   }
 };
 

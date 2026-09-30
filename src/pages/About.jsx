@@ -1,5 +1,5 @@
-﻿import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Award, TrendingUp } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Globe, Award, TrendingUp, Eye, Target, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import './About.css';
@@ -27,7 +27,51 @@ export default function About() {
         </div>
       </section>
 
+      {/* Visi & Misi Section */}
+      <section className="visi-misi-section">
+        <div className="container">
+          <motion.div className="text-center visi-misi-header" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
+            <h2 className="font-serif section-title">{aboutData.visiMisi.sectionTitle1} <span className="italic">{aboutData.visiMisi.sectionTitle2}</span></h2>
+            <p className="section-subtitle">{aboutData.visiMisi.sectionSubtitle}</p>
+          </motion.div>
+
+          <div className="visi-misi-grid">
+            {/* Visi */}
+            <motion.div className="visi-card" initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <div className="vm-card-header">
+                <div className="vm-icon-wrap vm-icon-visi">
+                  <Eye size={28} />
+                </div>
+                <span className="vm-label">{aboutData.visiMisi.visiLabel}</span>
+              </div>
+              <h3 className="font-serif vm-title">{aboutData.visiMisi.visiTitle}</h3>
+              <p className="vm-desc">{aboutData.visiMisi.visiDesc}</p>
+            </motion.div>
+
+            {/* Misi */}
+            <motion.div className="misi-card" initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <div className="vm-card-header">
+                <div className="vm-icon-wrap vm-icon-misi">
+                  <Target size={28} />
+                </div>
+                <span className="vm-label">{aboutData.visiMisi.misiLabel}</span>
+              </div>
+              <h3 className="font-serif vm-title">{aboutData.visiMisi.misiTitle}</h3>
+              <ul className="vm-misi-list">
+                {aboutData.visiMisi.misiItems.map((item, i) => (
+                  <motion.li key={i} initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 + 0.3 }}>
+                    <CheckCircle size={16} className="vm-check-icon" />
+                    <span>{item}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Philosophy & Research (Zig-Zag) */}
+
       <section className="about-content">
         <div className="container">
           <div className="about-grid">
