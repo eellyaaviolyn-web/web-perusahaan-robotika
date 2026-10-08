@@ -1,4 +1,4 @@
-﻿.scroll-to-top {
+.scroll-to-top {
   position: fixed;
   bottom: 6.5rem;
   right: 2.2rem;
@@ -20,3 +20,13 @@
   background: var(--primary, #c5a880);
   color: white;
 }
+
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 5rem;
+    right: 1.45rem;
+    width: 38px;
+    height: 38px;
+  }
+}
+

@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cookie, X, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -37,21 +37,21 @@ export default function CookieBanner() {
           transition={{ type: 'spring', stiffness: 200, damping: 30 }}
           style={{
             position: 'fixed',
-            bottom: '80px',
+            bottom: '16px',
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 99998,
-            width: 'min(680px, calc(100vw - 32px))',
-            background: 'rgba(15,15,15,0.92)',
+            width: 'min(680px, calc(100vw - 24px))',
+            background: 'rgba(15,15,15,0.95)',
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(200,170,110,0.25)',
-            borderRadius: '20px',
-            padding: '1.5rem 2rem',
+            borderRadius: '16px',
+            padding: '1rem 1.25rem',
             display: 'flex',
             alignItems: 'center',
-            gap: '1.5rem',
+            gap: '1rem',
             flexWrap: 'wrap',
-            boxShadow: '0 20px 60px rgba(0,0,0,0.5)',
+            boxShadow: '0 20px 60px rgba(0,0,0,0.6)',
           }}
         >
           <Cookie size={28} style={{ color: 'var(--primary)', flexShrink: 0 }} />

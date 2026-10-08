@@ -1,4 +1,4 @@
-﻿.whatsapp-float {
+.whatsapp-float {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
@@ -43,3 +43,16 @@
   letter-spacing: 0.5px;
 }
 .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 1.25rem;
+    right: 1.25rem;
+    width: 52px;
+    height: 52px;
+  }
+  .whatsapp-tooltip {
+    display: none;
+  }
+}
+

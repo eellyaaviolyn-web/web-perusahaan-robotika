@@ -1,25 +1,25 @@
 .page-wrapper {
-  padding-top: 100px;
+  padding-top: 80px;
   background-color: var(--bg-color);
   min-height: 100vh;
 }
 
 .page-hero {
-  padding: 6rem 0 3rem 0;
+  padding: 4.5rem 0 2.5rem 0;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-color-alt);
 }
 
 .page-title {
-  font-size: 4.5rem;
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
   color: var(--secondary);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
 }
 
 .page-subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.25rem);
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
@@ -248,20 +248,40 @@
 }
 
 @media (max-width: 992px) {
-  .page-title { font-size: 3.5rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 4rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .reverse-grid { display: flex; flex-direction: column-reverse; }
-  .about-image { height: 400px; }
+  .about-image { height: 380px; }
   
-  .quote-text { font-size: 1.8rem; }
+  .quote-section { padding: 5rem 0; }
+  .quote-text { font-size: 1.8rem; margin-bottom: 2rem; }
   
-  .timeline-center-line { left: 0; }
+  .timeline-center-line { left: 16px; }
   .timeline-box { width: 100%; }
-  .timeline-row.left .timeline-box { padding-right: 0; padding-left: 2rem; text-align: left; }
-  .timeline-row.right .timeline-box { padding-left: 2rem; }
-  .timeline-row.left .timeline-box::after { left: -6px; right: auto; }
+  .timeline-row.left .timeline-box { padding-right: 0; padding-left: 2.5rem; text-align: left; }
+  .timeline-row.right .timeline-box { padding-left: 2.5rem; }
+  .timeline-row.left .timeline-box::after { left: 9px; right: auto; }
+  .timeline-row.right .timeline-box::after { left: 9px; }
   
   .impact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .impact-card { padding: 2.5rem 2rem; }
+}
+
+@media (max-width: 576px) {
+  .about-content { padding: 3.5rem 0 4rem 0; }
+  .about-grid { gap: 2rem; }
+  .about-text h2 { font-size: 1.85rem; margin-bottom: 1rem; }
+  .about-text p { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+  .about-image { height: 260px; }
+  .placeholder-image { border-radius: 1.25rem 3rem 1.25rem 1.25rem; }
+  .quote-section { padding: 3.5rem 0; }
+  .quote-text { font-size: 1.35rem; line-height: 1.5; margin-bottom: 1.5rem; }
+  .timeline-section { padding: 3.5rem 0; }
+  .timeline-row { margin-bottom: 2.5rem; }
+  .timeline-box h3 { font-size: 1.4rem; }
+  .timeline-box p { font-size: 0.9rem; }
+  .impact-section { padding: 3.5rem 0; }
+  .impact-card { padding: 2rem 1.25rem; border-radius: 1rem 2rem 1rem 1rem; }
+  .about-cta { padding: 3.5rem 0 5rem 0; }
 }
 
 /* ===== VISI & MISI SECTION ===== */
@@ -414,3 +434,28 @@
     padding: 1.75rem;
   }
 }
+
+@media (max-width: 576px) {
+  .visi-misi-section {
+    padding: 3.5rem 0;
+  }
+  .visi-misi-header {
+    margin-bottom: 2.5rem;
+  }
+  .visi-card,
+  .misi-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 16px;
+  }
+  .vm-title {
+    font-size: 1.2rem;
+  }
+  .vm-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  .vm-misi-list li {
+    font-size: 0.88rem;
+  }
+}
+

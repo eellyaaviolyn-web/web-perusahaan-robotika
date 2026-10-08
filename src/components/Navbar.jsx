@@ -46,41 +46,75 @@ export default function Navbar() {
     };
   }, []);
 
-  // On inner pages, always act as if scrolled to maintain a solid white background
-  const isSolid = scrolled || !isHomePage;
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
+  // Close on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  // On inner pages or when menu is open, always act as if scrolled
+  const isSolid = scrolled || !isHomePage || isOpen;
 
   return (
-    <nav className={`navbar ${isSolid ? 'scrolled' : ''}`}>
-      <div className="nav-container container">
-        <Link to="/" className="nav-brand" onClick={closeMenu}>
-          <img src="/logo.png" alt="Vin Robotik" className="nav-logo" />
-        </Link>
+    <>
+      <nav className={`navbar ${isSolid ? 'scrolled' : ''} ${isOpen ? 'menu-open' : ''}`}>
+        <div className="nav-container container">
+          <Link to="/" className="nav-brand" onClick={closeMenu} aria-label="Vin Robotik Home">
+            <img src="/logo.png" alt="Vin Robotik" className="nav-logo" />
+          </Link>
 
-        <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.home')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.about')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/products" className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.collection')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/services" className={`nav-link ${location.pathname === '/services' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.services')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/simulator" className={`nav-link ${location.pathname === '/simulator' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.simulator')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/casestudies" className={`nav-link ${location.pathname === '/casestudies' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.journal')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.9 }} to="/careers" className={`nav-link ${location.pathname === '/careers' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.careers')}</MotionLink>
-          <MotionLink whileTap={{ scale: 0.95 }} to="/contact" className="btn btn-primary nav-btn" onClick={closeMenu}>{t('nav.book')}</MotionLink>
-          
-          <div className="nav-controls" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: '0.5rem' }}>
-            <button className="lang-toggle" onClick={toggleLanguage} aria-label="Toggle Language" style={{ background: 'none', border: '1px solid var(--border-color)', borderRadius: '20px', padding: '0.4rem 0.6rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.3rem', color: 'var(--text-main)', fontSize: '0.8rem', fontWeight: '500' }}>
-              <Globe size={14} />
-              {language.toUpperCase()}
-            </button>
-            <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Dark Mode" style={{ marginLeft: 0 }}>
-              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
-            </button>
+          <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.home')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/about" className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.about')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/products" className={`nav-link ${location.pathname === '/products' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.collection')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/services" className={`nav-link ${location.pathname === '/services' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.services')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/simulator" className={`nav-link ${location.pathname === '/simulator' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.simulator')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/casestudies" className={`nav-link ${location.pathname === '/casestudies' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.journal')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/careers" className={`nav-link ${location.pathname === '/careers' ? 'active' : ''}`} onClick={closeMenu}>{t('nav.careers')}</MotionLink>
+            <MotionLink whileTap={{ scale: 0.95 }} to="/contact" className="btn btn-primary nav-btn" onClick={closeMenu}>{t('nav.book')}</MotionLink>
+            
+            <div className="nav-controls">
+              <button className="lang-toggle" onClick={toggleLanguage} aria-label="Toggle Language">
+                <Globe size={15} />
+                <span>{language.toUpperCase()}</span>
+              </button>
+              <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle Dark Mode">
+                {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className="nav-toggle" onClick={toggleMenu}>
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
+          <button 
+            type="button"
+            className="nav-toggle" 
+            onClick={toggleMenu} 
+            aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
+            aria-expanded={isOpen}
+          >
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile backdrop */}
+      {isOpen && (
+        <div 
+          className="nav-backdrop" 
+          onClick={closeMenu} 
+          aria-hidden="true" 
+        />
+      )}
+    </>
   );
 }

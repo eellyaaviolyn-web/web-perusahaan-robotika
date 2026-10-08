@@ -5,21 +5,21 @@
 }
 
 .page-hero {
-  padding: 6rem 0 3rem 0;
+  padding: 4.5rem 0 2.5rem 0;
   text-align: center;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--bg-color-alt);
 }
 
 .page-title {
-  font-size: 4.5rem;
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
   color: var(--secondary);
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
 }
 
 .page-subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.25rem);
   color: var(--text-muted);
   max-width: 600px;
   margin: 0 auto;
@@ -117,6 +117,7 @@
 @media (max-width: 768px) {
   .culture-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
   
   .job-row {
@@ -129,6 +130,29 @@
     padding-left: 0;
     padding-right: 0;
     background-color: transparent;
+  }
+}
+
+@media (max-width: 576px) {
+  .culture-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 1.25rem 2.5rem 1.25rem 1.25rem;
+  }
+  .culture-card h3 {
+    font-size: 1.35rem;
+  }
+  .job-row {
+    padding: 1.75rem 0;
+  }
+  .job-info h3 {
+    font-size: 1.3rem;
+  }
+  .job-row .btn {
+    width: 100%;
+  }
+  .application-modal {
+    padding: 2rem 1.25rem;
+    border-radius: 1.25rem;
   }
 }
 

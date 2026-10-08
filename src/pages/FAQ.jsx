@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Search, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
@@ -86,11 +86,6 @@ export default function FAQ() {
           </div>
         </div>
       </section>
-
-      {/* Floating Chat Button Mockup */}
-      <div className="floating-chat" onClick={() => alert(faqData.chatAlert)}>
-        <MessageCircle size={28} />
-      </div>
     </div>
   );
 }

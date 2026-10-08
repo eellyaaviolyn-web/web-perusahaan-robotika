@@ -5,12 +5,12 @@
 /* Cinematic Full-Screen Hero */
 .hero-section {
   position: relative;
-  height: 100vh;
-  min-height: 700px;
+  min-height: 100dvh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0;
+  padding: 6rem 0 3rem;
   margin-top: -80px;
 }
 
@@ -43,12 +43,13 @@
   z-index: 2;
   text-align: center;
   color: white;
-  padding-bottom: 5rem;
+  padding: 2rem 1rem 3rem;
+  max-width: 900px;
 }
 
 .hero-kicker {
-  font-size: 0.85rem;
-  letter-spacing: 4px;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  letter-spacing: clamp(2px, 1vw, 4px);
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   display: block;
@@ -56,8 +57,8 @@
 }
 
 .hero-title {
-  font-size: 5.5rem;
-  line-height: 1.1;
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+  line-height: 1.15;
   color: #ffffff;
 }
 
@@ -493,30 +494,39 @@
 }
 
 @media (max-width: 992px) {
-  .hero-title { font-size: 4rem; }
-  .booking-bar { flex-wrap: wrap; gap: 1.5rem; }
-  .booking-field.divider { display: none; }
-  .booking-field { min-width: 45%; }
-  .booking-btn { width: 100%; margin-left: 0; margin-top: 1rem; }
+  .hero-section {
+    padding: 7rem 0 3rem;
+  }
   .boutique-grid { grid-template-columns: 1fr; gap: 3rem; }
-  .boutique-image-container { height: 400px; }
+  .boutique-image-container { height: 380px; }
   
-  .collection-grid { grid-template-columns: 1fr; gap: 4rem; }
-  .features-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .collection-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
   .experience-layout { grid-template-columns: 1fr; }
-  .experience-image { height: 400px; }
-  .cta-content h2 { font-size: 3rem; }
+  .experience-image { height: 380px; }
+  .cta-content h2 { font-size: 2.75rem; }
+  .cta-immersive { background-attachment: scroll; padding: 7rem 0; }
+}
+
+@media (max-width: 768px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(197,168,128,0.2); }
+  .features-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 576px) {
-  .hero-title { font-size: 2.2rem; }
-  .booking-field { min-width: 100%; }
+  .hero-content-centered { padding-bottom: 1.5rem; }
   .stats-grid { grid-template-columns: 1fr; gap: 0; }
-  .stat-item { border-bottom: 1px solid rgba(197,168,128,0.2); border-right: none; }
+  .stat-item { padding: 1.5rem 1rem; border-bottom: 1px solid rgba(197,168,128,0.2); border-right: none; }
   .stat-item:last-child { border-bottom: none; }
-  .collection-grid { gap: 2rem; }
-  .experience-image { height: 300px; }
-  .boutique-image-container { height: 300px; }
+  .stat-number { font-size: 2.5rem; }
+  .collection-grid { gap: 2.5rem; }
+  .card-image-wrapper { height: 260px; border-radius: 1.25rem 3rem 1.25rem 1.25rem; }
+  .experience-image { height: 260px; border-radius: 1.25rem 3rem 1.25rem 1.25rem; }
+  .boutique-image-container { height: 280px; }
+  .boutique-image { border-radius: 1.25rem 3rem 1.25rem 1.25rem; }
+  .cta-immersive { padding: 5rem 0; }
+  .cta-content h2 { font-size: 2rem; }
 }
 
 /* Features Section */

@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Cpu, Shield, Zap, Star, Clock } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -79,7 +79,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <Link to="/contact" className="btn btn-primary hover-target">{homeData.hero.consult} <ArrowRight size={18} className="ml-2" /></Link>
-            <Link to="/collection" className="btn btn-outline hover-target" style={{ backgroundColor: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.2)', color: 'white' }}>{homeData.hero.system}</Link>
+            <Link to="/products" className="btn btn-outline hover-target" style={{ backgroundColor: 'rgba(0,0,0,0.5)', borderColor: 'rgba(255,255,255,0.2)', color: 'white' }}>{homeData.hero.system}</Link>
           </motion.div>
         </div>
       </section>

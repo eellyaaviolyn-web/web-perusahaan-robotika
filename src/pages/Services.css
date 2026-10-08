@@ -217,9 +217,41 @@
 @media (max-width: 992px) {
   .services-grid { grid-template-columns: 1fr; gap: 2rem; }
   .timeline-step { flex-direction: column; gap: 1.5rem; }
-  .timeline-line { left: 30px; }
   .step-content::before { display: none; }
-  .sla-content h2 { font-size: 3rem; }
+  .sla-content h2 { font-size: clamp(2rem, 5vw, 3rem); }
   .sla-stats { flex-direction: column; align-items: flex-start; gap: 2rem; }
   .sla-stats .divider { display: none; }
+  .services-cta { padding: 5rem 0; }
 }
+
+@media (max-width: 768px) {
+  .timeline-line { display: none; }
+  .timeline-step { margin-bottom: 2.5rem; }
+  .methodology-section { padding: 4rem 0 6rem 0; }
+}
+
+@media (max-width: 576px) {
+  .service-card {
+    padding: 2.5rem 1.25rem;
+    border-radius: 1rem 2.5rem 1rem 1rem;
+  }
+  .service-card h3 {
+    font-size: 1.45rem;
+  }
+  .step-content {
+    padding: 2rem 1.25rem;
+    border-radius: 1rem 2rem 1rem 1rem;
+  }
+  .step-number {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+  }
+  .sla-stats h4 {
+    font-size: 2rem;
+  }
+  .services-cta {
+    padding: 4rem 0;
+  }
+}
+

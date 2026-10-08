@@ -200,15 +200,28 @@
 @media (max-width: 992px) {
   .journal-grid { grid-template-columns: 1fr; gap: 3rem; }
   .journal-card.featured { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-  .journal-card.featured .journal-image-container { height: 400px; }
-  .journal-image-container { height: 300px; }
+  .journal-card.featured .journal-image-container { height: 380px; }
+  .journal-image-container { height: 280px; }
   .journal-content h2 { font-size: 2.2rem; }
   
   .whitepaper-grid { grid-template-columns: 1fr; gap: 2rem; }
   
   .newsletter-form { flex-direction: column; }
-  .newsletter-content h2 { font-size: 2.5rem; }
+  .newsletter-content h2 { font-size: 2.2rem; }
 }
+
+@media (max-width: 576px) {
+  .journal-section { padding: 3.5rem 0 5rem 0; }
+  .journal-card.featured .journal-image-container { height: 250px; border-radius: 1.25rem 2.5rem 1.25rem 1.25rem; }
+  .journal-image-container { height: 220px; border-radius: 1.25rem 2.5rem 1.25rem 1.25rem; }
+  .journal-content h2 { font-size: 1.75rem; }
+  .journal-content h3 { font-size: 1.4rem; }
+  .whitepapers-section { padding: 4rem 0; }
+  .whitepaper-card { padding: 2rem 1.25rem; border-radius: 1.25rem; }
+  .newsletter-box { padding: 2.5rem 1.25rem; border-radius: 1.25rem; }
+  .download-modal { padding: 2rem 1.25rem; border-radius: 1.25rem; width: 95%; }
+}
+
 
 /* Modal Styles */
 .download-modal {

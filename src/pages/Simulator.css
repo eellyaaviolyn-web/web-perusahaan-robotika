@@ -1,22 +1,23 @@
 .simulator-page {
-  padding-top: 180px;
+  padding-top: clamp(90px, 12vw, 150px);
   min-height: 100vh;
   color: var(--text-main);
 }
 
 .simulator-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
 .simulator-header h1 {
-  font-size: 4rem;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.15;
   margin-bottom: 1rem;
 }
 
 .simulator-header p {
   color: var(--text-muted);
-  font-size: 1.2rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.2rem);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -309,8 +310,68 @@
 @media (max-width: 992px) {
   .simulator-container {
     grid-template-columns: 1fr;
-  }
-  .simulator-header h1 {
-    font-size: 3rem;
+    gap: 3rem;
   }
 }
+
+@media (max-width: 576px) {
+  .simulator-controls {
+    padding: 1.5rem 1.15rem;
+    border-radius: 1.25rem;
+  }
+  .control-group {
+    margin-bottom: 1.75rem;
+  }
+  .control-label {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  .control-value {
+    font-size: 1.05rem;
+  }
+  .result-card {
+    padding: 1.5rem 1.15rem;
+    border-radius: 1.15rem;
+  }
+  .result-value {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+  }
+  .chart-bars {
+    gap: 1.25rem;
+    height: 240px;
+  }
+  .chart-bar-wrapper {
+    width: 90px;
+  }
+  .chart-value {
+    font-size: 0.78rem;
+  }
+  .simulator-cta {
+    padding: 2.5rem 1.25rem;
+    border-radius: 1.25rem;
+    margin-top: 3.5rem;
+  }
+  .simulator-cta h2 {
+    font-size: 1.75rem;
+  }
+  .executive-metrics {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+  }
+  .metrics-title {
+    font-size: 1.85rem;
+    margin-bottom: 2rem;
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .metric-box {
+    padding: 1.75rem 1.25rem;
+  }
+  .download-report-wrapper {
+    padding: 2rem 1.25rem;
+    border-radius: 1.25rem;
+  }
+}
+
