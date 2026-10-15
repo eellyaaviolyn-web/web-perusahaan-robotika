@@ -84,44 +84,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Client Logo Marquee */}
-      <section className="client-marquee-section">
-        <div className="marquee-container">
-          <div className="marquee-track">
-            {Array(2).fill([
-              "AERO DYNAMICS", "QUANTUM TECH", "NEURAL AUTO", "STEELWORKS", "GLOBAL MED", "VANGUARD"
-            ]).flat().map((logo, index) => (
-              <div key={index} className="marquee-item font-serif">
-                {logo}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="stats-section">
-        <div className="container">
-          <motion.div
-            className="stats-grid"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-80px' }}
-            variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
-          >
-            {homeData.stats.map((stat, i) => (
-              <motion.div
-                key={i}
-                className="stat-item"
-                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } } }}
-              >
-                <span className="stat-number font-serif">{stat.number}</span>
-                <span className="stat-label">{stat.label}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
       {/* Features Section */}
       <section className="features-section">
