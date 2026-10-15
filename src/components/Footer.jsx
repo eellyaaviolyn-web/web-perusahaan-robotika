@@ -86,10 +86,6 @@ export default function Footer() {
         
         <div className="footer-bottom">
           <p>{t('footer.rights')}</p>
-          <div className="server-status">
-            <span className="status-dot"></span>
-            <span className="status-text">{t('footer.status') || "All Systems Operational"}</span>
-          </div>
         </div>
       </div>
     </footer>
