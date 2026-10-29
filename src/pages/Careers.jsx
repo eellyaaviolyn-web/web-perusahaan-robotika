@@ -12,6 +12,12 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
 };
 
+// Sanitasi input teks untuk mencegah injeksi tag/XSS
+const sanitizeText = (val) => {
+  if (typeof val !== 'string') return '';
+  return val.replace(/<[^>]*>?/gm, '').trim();
+};
+
 export default function Careers() {
   const { t } = useLanguage();
   const careersData = t('careers');
@@ -32,11 +38,24 @@ export default function Careers() {
     e.preventDefault();
     
     const formData = new FormData(e.target);
-    const namaLengkap = formData.get("nama_lengkap");
-    const email = formData.get("email");
-    const posisi = formData.get("posisi");
-    const portofolioUrl = formData.get("portofolio_url") || "";
-    const cvResumeLink = formData.get("cv_resume_link");
+
+    // Proteksi Bot Honeypot
+    const honeypot = formData.get("bot_security_hp");
+    if (honeypot) {
+      toast.success(careersData.modal.successTitle, { duration: 4000, icon: '🎉' });
+      setIsSubmitted(true);
+      setTimeout(() => {
+        setSelectedJob(null);
+        setIsSubmitted(false);
+      }, 2000);
+      return;
+    }
+
+    const namaLengkap = sanitizeText(formData.get("nama_lengkap"));
+    const email = sanitizeText(formData.get("email"));
+    const posisi = sanitizeText(formData.get("posisi"));
+    const portofolioUrl = sanitizeText(formData.get("portofolio_url") || "");
+    const cvResumeLink = sanitizeText(formData.get("cv_resume_link"));
     
     setIsSubmitting(true);
     
@@ -185,6 +204,10 @@ export default function Careers() {
                   
                   <form onSubmit={handleSubmit} className="application-form">
                     <input type="hidden" name="posisi" value={selectedJob.title} />
+                    {/* Bot Honeypot */}
+                    <div style={{ display: 'none', opacity: 0, position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                      <input type="text" name="bot_security_hp" tabIndex="-1" autoComplete="off" />
+                    </div>
                     
                     <div className="form-group">
                       <label>{careersData.modal.name}</label>

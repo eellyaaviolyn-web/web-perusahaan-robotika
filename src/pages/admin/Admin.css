@@ -1,4 +1,4 @@
-﻿/* ADMIN GLOBAL CSS - Vin Robotik Admin Dashboard - LIGHT MODE */
+/* ADMIN GLOBAL CSS - Vin Robotik Admin Dashboard - LIGHT MODE */
 
 /* ---------- LOGIN PAGE ---------- */
 .admin-login-bg {
@@ -69,6 +69,30 @@
 .admin-login-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,170,110,0.45); }
 .admin-login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .admin-login-footer { margin-top: 1.5rem; text-align: center; font-size: 0.78rem; color: #bbb; letter-spacing: 0.5px; }
+
+/* Security Alert / Lockout Banner */
+.admin-lockout-alert {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #dc2626;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.4;
+  text-align: left;
+}
+.admin-lockout-alert.warning {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #b45309;
+}
+.admin-lockout-alert svg {
+  flex-shrink: 0;
+}
 
 /* ---------- LAYOUT ---------- */
 .admin-shell { display: flex; min-height: 100vh; background: #f5f2eb; color: #2a2010; }

@@ -1,9 +1,10 @@
-﻿import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Outlet, useNavigate, NavLink, useLocation } from 'react-router-dom';
 import { supabase } from '../../supabaseClient';
-import { LayoutDashboard, Inbox, Briefcase, FileDown, LogOut, Loader2, Menu, X, Bell, ChevronRight, Mail, Clock } from 'lucide-react';
+import { LayoutDashboard, Inbox, Briefcase, FileDown, LogOut, Loader2, Menu, X, Bell, ChevronRight, Mail, Clock, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import toast from 'react-hot-toast';
+import { ALLOWED_ADMIN_EMAILS } from './AdminLogin';
 import './Admin.css';
 
 export default function AdminLayout() {
@@ -17,18 +18,68 @@ export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Verifikasi Autentikasi & Izin Role Whitelist Admin
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
+    const verifyUser = async (currentSession) => {
+      if (!currentSession) {
+        navigate('/admin/login');
+        return;
+      }
+
+      const userEmail = currentSession.user?.email?.toLowerCase();
+      if (!ALLOWED_ADMIN_EMAILS.includes(userEmail)) {
+        toast.error(`Akses Ditolak: ${userEmail} bukan Administrator terdaftar.`, { duration: 5000 });
+        await supabase.auth.signOut();
+        navigate('/admin/login');
+        return;
+      }
+
+      setSession(currentSession);
       setLoading(false);
-      if (!session) navigate('/admin/login');
+    };
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      verifyUser(session);
     });
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-      if (!session) navigate('/admin/login');
+      verifyUser(session);
     });
+
     return () => subscription.unsubscribe();
   }, [navigate]);
+
+  // Auto-Logout Otomatis setelah 15 Menit Inaktif (Session Timeout Protection)
+  useEffect(() => {
+    if (!session) return;
+
+    const INACTIVITY_LIMIT_MS = 15 * 60 * 1000; // 15 Menit
+    let timer;
+
+    const performAutoLogout = async () => {
+      toast('Sesi Anda berakhir demi keamanan (15 menit tanpa aktivitas).', {
+        icon: '🛡️',
+        duration: 5000
+      });
+      await supabase.auth.signOut();
+      navigate('/admin/login');
+    };
+
+    const resetTimer = () => {
+      clearTimeout(timer);
+      timer = setTimeout(performAutoLogout, INACTIVITY_LIMIT_MS);
+    };
+
+    const userEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
+    userEvents.forEach((evt) => window.addEventListener(evt, resetTimer));
+
+    resetTimer();
+
+    return () => {
+      clearTimeout(timer);
+      userEvents.forEach((evt) => window.removeEventListener(evt, resetTimer));
+    };
+  }, [session, navigate]);
 
   useEffect(() => {
     async function fetchNotifs() {

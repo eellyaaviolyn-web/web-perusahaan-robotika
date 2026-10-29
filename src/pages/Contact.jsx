@@ -12,6 +12,12 @@ const fadeUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 1, ease: "easeOut" } }
 };
 
+// Sanitasi input sederhana untuk menangkal XSS / injeksi tag
+const sanitizeInput = (val) => {
+  if (typeof val !== 'string') return '';
+  return val.replace(/<[^>]*>?/gm, '').trim();
+};
+
 export default function Contact() {
   const location = useLocation();
   const { t, language } = useLanguage();
@@ -48,9 +54,20 @@ export default function Contact() {
     setIsSubmitting(true);
     
     const formData = new FormData(e.target);
-    const namaLengkap = formData.get("nama_lengkap");
-    const jabatan = formData.get("jabatan");
-    const emailBisnis = formData.get("email_bisnis");
+
+    // Proteksi Bot Honeypot: Jika terisi, ini bot otomatis
+    const honeypot = formData.get("bot_security_hp");
+    if (honeypot) {
+      toast.success(contactData.messages.successGeneral, { duration: 4000, icon: '✅' });
+      setIsSubmitted(true);
+      setIsSubmitting(false);
+      return;
+    }
+
+    const namaLengkap = sanitizeInput(formData.get("nama_lengkap"));
+    const jabatan = sanitizeInput(formData.get("jabatan"));
+    const emailBisnis = sanitizeInput(formData.get("email_bisnis"));
+    const cleanDetails = sanitizeInput(details);
     
     try {
       const { data, error } = await supabase
@@ -60,7 +77,7 @@ export default function Contact() {
             nama_lengkap: namaLengkap,
             email: emailBisnis,
             nama_perusahaan: industry,
-            pesan: `Jabatan: ${jabatan}\n\nDetail:\n${details}`
+            pesan: `Jabatan: ${jabatan}\n\nDetail:\n${cleanDetails}`
           }
         ]);
 
@@ -145,6 +162,10 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                   >
+                    {/* Bot Honeypot - Tak terlihat oleh manusia, menjebak spam bot */}
+                    <div style={{ display: 'none', opacity: 0, position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                      <input type="text" name="bot_security_hp" tabIndex="-1" autoComplete="off" />
+                    </div>
                     <div className="form-group">
                       <label>{contactData.form.name}</label>
                       <input type="text" name="nama_lengkap" className="luxury-input" placeholder={contactData.form.namePlace} required />
